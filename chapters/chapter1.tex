@@ -1,13 +1,24 @@
-\begin{section}{Lemma 3.1}
+\begin{section}{Chapter 1}
 % LTeX: language=de-DE
 \begin{theorem}
-   Mit den linearen Gewichten $w_k = \chi k + p $, hat ein Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$
+\cite[Lemma 3.1]{janson2019random}
+   Mit den linearen Gewichten $w_k = \chi k + p $, hat ein Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$.
 \end{theorem}
 \begin{proof}
+    Seien $d_1...d_m$ die Ausgangsgrade der jeweiligen Knoten im Baum. Dann ist die Summe der Ausgangsgrade, $\sum_{i=1}^{m}d_i = m-1$ und somit:
+    \[
+     w(T) = \sum_{i=1}^{m}w_i = \sum_{i=1}^{m} (\chi d_i + \rho) = m \rho + \chi \sum_{i = 1}^{m} d_i = m(\chi + \rho) - \chi  
+    \]
 \end{proof}
-\begin{theorem} \cite{janson2019random}
-    Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty = $ eine Sequenz von \linpreft, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet
+\begin{theorem} \cite[Theorem 3.2]{janson2019random}
+    Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty = $ eine Folge von \linpreft, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet. Sei $N_j(n) := |T^j_n|$, die Größe des j-ten \PsubT von $T_n$. Dann gilt 
+    \[ 
+        \forall j \geq 1  \hspace{6pt} \frac{N_j(n)}{n}  \rightarrow P_j \hspace{6pt} \text{für} \hspace{6pt} n \rightarrow \infty \hspace{6pt} \text{P-f.s.}.
+  \]
+Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{\rho}{\chi+\rho}})$ haben. \textcolor{red}{add case 0} 
 \end{theorem}
 \begin{proof}
+    Da wir im Allgemeinen $\chi + \rho > 0 $ annehmen dürfen, und da die Multiplikation von allen $w_k$ mit einer Konstante nicht den Baum ändern, können wir o.B.d.A   $\chi + \rho = 1 $ annehmen. Das Argument folgt nun durch Übersetzung von \PsubT zu Zyklen in Permutationen durch eine Bijektion. Dafür  
+
 \end{proof}
 \end{section}
