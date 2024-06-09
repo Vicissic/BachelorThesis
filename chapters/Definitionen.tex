@@ -1,6 +1,28 @@
 \begin{section}{Definitionen}
 % LTeX: language=de-DE
 \begin{Definition}
-   Sei $F$ eine endliche Menge. Dann ist eine Partition von $F$ eine ungeordnete Sammlung von nichtleeren, disjunkten Untermengen $\{A_1 ... A_k\}$, mit $\cup_{i=1}^{k}A_k = F$
+   Sei $F$ eine endliche Menge. Dann ist eine Partition von $F$ eine ungeordnete Sammlung von nichtleeren, disjunkten Untermengen $\{A_i| 1 \leq i \leq k, A_i \subseteq F\}$, mit $\cup_{i=1}^{k}A_k = F$.\\
+   Eine Partition von einer natürlichen Zahl $n$, ist eine ungeordnete Menge von positiven natürlichen Zahlen mit Summe $n$.
 \end{Definition}
+\begin{Definition}
+    \textnormal{(Zufällige Permutationen)}
+\begin{enumerate}
+    \item Eine zufällige Partition von $n\in \mathbb{N}$ ist eine Zufallsvariable $\pi_n$ mit Werten in der endlichen Menge von allen Partitionen von $n$.
+    \item Eine zufällige Partition von $[n] := \{1 ...n\}$, ist eine Zufallsvariable $\Pi_n$ mit Werten in der endlichen Menge von Partitionen von $[n]$.
+    \item Eine zufällige Partition auf $\mathbb{N}$ ist eine Folge $\Pi = (\Pi_n)_{n\in \mathbb{N}}$ von Zufallsvariablen auf einem gemeinsamen Wahrscheinlichkeitsraum, sodass für $i<j, i,j \in \mathbb{N}$ die Restriktion von $\Pi_j$ auf $[i]$ $\Pi_i$ ist.
+\end{enumerate}
+
+\end{Definition}
+\begin{Definition}
+    \textnormal{(Austauschbarkeit)}
+    \begin{enumerate}
+        \item Eine zufällige Partition $\Pi_n$ von $[n]$ heißt Austauschbar, falls für jede Partition $\{ A_1 ... A_n\}$ von $[n]$
+        \[ 
+            \mathbb{P}(\Pi_n = \{ A_1 ... A_k\}) = p(|A_1|, ... |A_k|)
+        \]  
+        für eine symmetrische Funktion p von Kompositionen $(n_1, ..., n_k)$ von $n$. Diese Funktion wird auch EPPF (Exchangeable partition probability function) bezeichnet.
+
+    \end{enumerate}
+\end{Definition}
+
 \end{section}

@@ -1,4 +1,4 @@
-\begin{section}{Chapter 1}
+\chapter*{Chapter 1} 
 % LTeX: language=de-DE
 \begin{theorem}
 \cite[Lemma 3.1]{janson2019random}
@@ -18,7 +18,11 @@
 Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{\rho}{\chi+\rho}})$ haben. \textcolor{red}{add case 0} 
 \end{theorem}
 \begin{proof}
-    Da wir im Allgemeinen $\chi + \rho > 0 $ annehmen dürfen, und da die Multiplikation von allen $w_k$ mit einer Konstante nicht den Baum ändern, können wir o.B.d.A   $\chi + \rho = 1 $ annehmen. Das Argument folgt nun durch Übersetzung von \PsubT zu Zyklen in Permutationen durch eine Bijektion. Dafür  
-
+    Da wir im Allgemeinen $\chi + \rho > 0 $ annehmen dürfen, und da die Multiplikation von allen $w_k$ mit einer Konstante nicht den Baum ändert, können wir o.B.d.A   $\chi + \rho = 1 $ annehmen. Das Argument folgt nun durch Übersetzung von \PsubT zu Zyklen in Permutationen und eine Bijektion zwischen \linpreft und Permutationen. Wir beginnen mit der Bijektion. \\
+    Dafür beschriften wir die Knoten sukzessiv, beginnend mit der Wurzel als 0, nach der Reihenfolge vom Hinzufügen zum Baum (der $i$-ter Knoten der hinzugefügt wird, wird mit $i-1$ beschriftet). Die Wurzel, die mit 0 beschriftet wird, wird identifiziert mit der leeren Permutation und der Zweite Knoten, welcher mit 1 beschriftet wird, wird mit dem Zyklus $(1)$ identifiziert. Wir identifizieren nun unsere Bäume mit Permutationen induktiv, nach folgenden zwei Regeln:
+    \begin{enumerate}
+        \item Falls der Knoten mit Beschriftung $i$ an die Wurzel angehängt wird, so fügen wir zur bestehenden Zyklus-Dekomposition, die Fixpunkt-Permutation $(i)$ hinzu.
+        \item Falls der Knoten mit Beschriftung $i$ an ein anderen Knoten mit Beschriftung $j$, $j \neq 0$ angehängt wird, so fügen wir in den Zyklus $C$, welcher $j$ enthält, $i$ direkt nach $j$ hinzu. Bedeutet also, falls im ursprünglichen Zyklus $j \rightarrow k$ abgebildet wurde, im nächsten Schritt $j \rightarrow i \rightarrow k$ abgebildet wird.
+    \end{enumerate}
+Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welche durch diese Konstruktion entsteht, bijektiv ist und somit können wir die Theorie die für 
 \end{proof}
-\end{section}
