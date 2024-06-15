@@ -1,3 +1,24 @@
-\begin{section}{Kingman representation theorem}
-    
+\begin{section}{Chinese Restaurant Process}
+% LTeX: language=de-DE
+    Der \glqq Chinese Restaurant Process\grqq, dient der Konstruktion von zufälligen austauschbaren Partitionen, mithilfe welcher die Analyse von Bäumen erleichtert wird. In Kapitel \textcolor{red}{add something}, wird eine Bijektion zwischen den Bäumen und Partitionen aufgestellt und dies erlaubt uns, die in diesem Kapitel entwickelte Theorie anzuwenden. Wir beginnen mit der Konstruktion vom \glqq Chinese Restaurant Process\grqq.\\
+\newline
+\textbf{\fontsize{14}{18}\selectfont Konstruktion von CRP}
+\\
+Bevor die Konstruktion vom Prozess beschrieben wird, wollen wir vorab das Ziel der Konstruktion erläutern. Die Konstruktion erlaubt uns eine konsistente Folge von austauschbaren zufälligen Partitionen von $[n]$ zu erzeugen, also eine zufällige Partition $\Pi_\infty := (\Pi_n)_{n \in \mathbb{N}}$ von $\mathbb{N}$ zu generieren. Dies erlaubt uns u.a. Kingmans Sätze wie \textit{Kingman's Correspondance} und \textit{Kingman's representation} zu nutzen und somit Aussagen über die Grenzwerte der Größe der Blöcke von Partitionen zu formulieren. Wir beginnen mit einer einfachen Form des Prozesses: \\
+\\
+Wir betrachten eine Folge von zufälligen Permutationen $ \{\sigma_n, n \in \mathbb{N}\}$, sodass 
+\begin{enumerate}
+    \item $ \{\sigma_n\}$ Uniform verteilt auf $[n]$ ist.
+    \item $\forall n \in \mathbb{N}$, falls $\sigma_n$ als Produkt von Zyklen dargestellt wird, $\sigma_{n-1}$ von $\sigma_n$ durch Deletion von Element $n$ zurückgewonnen wird.   
+\end{enumerate}
+Die Verteilung, die durch diese zwei Regeln entsteht, kann durch einen zufälligen Sitzplan in einem chinesischen Restaurant beschrieben werden. Man stelle sich das Restaurant zunächst vor als eine Sammlung von abzählbar unendlichen vielen Tischen, wo jeder Tisch die Sitzplatzkapazität von abzählbar unendlich vielen Kunden hat. Die Kunden, nummeriert mit den natürlichen Zahlen nach Reihenfolge Ihres Erscheinens, werden nach folgenden Regeln platziert.
+\begin{enumerate}
+    \item Der erste Kunde sitzt an Tisch 1
+    \item Falls zum Zeitpunkt des Eintritts des $i$-ten Kundes $k$ Tische besetzt sind, so setzt sich dieser mit gleicher Wahrscheinlichkeit $(\frac{1}{n+1})$ links von Kunden $i: i \in \{1...n\}$ oder an einem neuen Tisch $k+1$.
+\end{enumerate}
+Wir definieren nun $\sigma_n: [n] \rightarrow [n]$ mithilfe dieser Regeln, sodass falls Kunde $i$ links von Kunde $j$ sitzt, $\sigma_n(i) = j$ und falls Kunde $i$ alleine sitzt $\sigma_n(i) = i$. Dass diese Folge von
+Permutationen die ersten 2 Regeln befolgt, ist durch eine triviale Induktion ersichtlich. 
+\\
+Die Partitionen die durch die Zyklen von den Permutationen generiert werden, 
+    %\item Falls zum Zeitpunkt des Eintritts des $i$-ten Kundes $k$ Tische besetzt sind, so setzt sich dieser an Tisch $j \in {1...k}$ mit Wahrscheinlichkeit $\frac{n_i-\alpha}{n+\theta}$ und an Tisch $k+1$ mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$
 \end{section}
