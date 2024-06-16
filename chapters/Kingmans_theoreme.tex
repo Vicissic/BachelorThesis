@@ -1,0 +1,47 @@
+\begin{section}{Kingman}
+% LTeX: language=de-DE
+\begin{Definition}{Konsistenz}\\
+    Wir nennen eine Folge von austauschbaren zufälligen Partitionen $(\Pi_n)$ \textit{konsistent}, falls die Restriktion $\Pi_{m,n}$ von $\Pi_m$ zu $[n]$ für alle $m > n$ die gleiche Verteilung hat wie $\Pi_m$. Alle zufälligen Partitionen auf $\mathbb{N}$ sind konsistent.
+    Äquivalent dazu folgt aus der Definition der EPPF (\ref{Austauschbarkeit}), dass eine symmetrische Funktion  $p: \cup_{i=1}^{\infty} \mathbb{N}^k \to [0,1]$ existiert, mit 
+    \begin{enumerate}
+        \item $p(1) = 1$
+        \item $\forall m < n$ und für alle Kompositionen $(n_1,...n_k)$ von $m$, gilt 
+        \[ 
+        p(n_1, ... n_k) = \sum_{i=1}^{k}p(n_1, ..., n_i + 1, ..., n_k) + p(n_1,...,n_k,1)
+        \]
+    \end{enumerate}
+\end{Definition}
+\begin{Definition}
+    Ein Block $N_{n,i}$ einer Partition von $[n]$ besitzt eine \textit{assymptotische Frequenz}, falls der Limes 
+    \[
+    P_i := \lim_{n \to \infty}\frac{|N_{n,i}|}{n}
+    \] 
+    existiert
+\end{Definition}
+\textcolor{red}{add definition of ranked atoms, consistency, De Finetti and page 43 of Pitman.}
+\\
+Wir beweisen nun eine analoge Aussage zu De Finetti für Partitionen von $\mathbb{N}$.
+\begin{section}{Kingman Paintbox representation}
+\begin{lemma}
+    \cite[Lemma 8.11]{NeiningerHS}
+    \textcolor{red}{add notation explanation}
+    Es sei $X = (X_{n})_{n \in \mathbb{N}}$ eine Folge austauschbarer Zufallsvariablen mit Werten in $E$ und $\phi: E \to \mathbb{R}$ messbar mit $\mathbb{E}[|\phi(X)|]< \infty$. Dann gilt für alle $n \geq l$ und $\pi \in S_n$
+    \begin{enumerate}
+        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] =\mathbb{E}[\phi(X^\pi)|\varepsilon_n]  $  $\mathbb{P}$-f.s.
+        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] = \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) = A_n(\phi)(X)$ $\mathbb{P}$-f.s.
+    \end{enumerate}
+\end{lemma}
+\textcolor{red}{Form diesen Satz um} Wir benötigen lediglich den Fall $l = 1$, denn wir wollen auf die empirische Verteilungsfunktion schließen. In diesem Fall vereinfacht sich die zweite Gleichung von 2. auf $\frac{1}{n}\sum_{i=1}^{n}\phi(X_i)$. Mit dem darauffolgenden Satz in \cite{NeiningerHS}
+\begin{theorem}
+\cite[Satz 8.12]{NeiningerHS}
+Sei $(X_n)_{n \in \mathbb{N}}$ austauschbar mit Werten in $E$ und $\phi: E^k \to \mathbb{R}$ eine messbare Funktion mit $\mathbb{E}[|\phi(X_1,X_2 ... X_k)|] < \infty$. Dann gilt
+\[
+\lim_{n \to \infty}A_n(\phi)(X) = \mathbb{E}[\phi(X)|\varepsilon] = \mathbb{E}[\phi(X)|\tau_\infty]\hspace{5pt} \mathbb{P} \hspace{5pt} \text{-f.s. und in } L_1
+\] 
+\end{theorem}
+Sei $\mu$ eine beliebige Verteilung mit Werten in $[0,1]$ und $(X_i)_{i \in \mathbb{N}}$ eine Folge von unabhängig identisch verteilten Zufallsvariablen mit Verteilung $\mu$.
+\begin{theorem}
+    Sei $\Pi_\infty$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} \rightarrow P^\downarrow_i$ P-f.s. für $n \to \infty$ $ \forall i \geq 1$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung die durch zufälliges Sampling von einer zufälligen Distribution mit \textcolor{red}{ranked atoms} $(P^\downarrow_i, i \geq 1)$ entsteht.
+\end{theorem}
+\end{section}
+\end{section}
