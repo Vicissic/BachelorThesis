@@ -1,4 +1,4 @@
-\begin{section}{Kingman}
+\begin{section}{Kingman Paintbox representation}
 % LTeX: language=de-DE
 \begin{Definition}{Konsistenz}\\
     Wir nennen eine Folge von austauschbaren zufälligen Partitionen $(\Pi_n)$ \textit{konsistent}, falls die Restriktion $\Pi_{m,n}$ von $\Pi_m$ zu $[n]$ für alle $m > n$ die gleiche Verteilung hat wie $\Pi_m$. Alle zufälligen Partitionen auf $\mathbb{N}$ sind konsistent.
@@ -18,12 +18,13 @@
     \] 
     existiert
 \end{Definition}
-\textcolor{red}{add definition of ranked atoms, consistency, De Finetti and page 43 of Pitman.}
+\textcolor{red}{add definition of ranked atoms,  De Finetti and page 43 of Pitman.}
 \\
 Wir beweisen nun eine analoge Aussage zu De Finetti für Partitionen von $\mathbb{N}$.
-\begin{section}{Kingman Paintbox representation}
+\textcolor{red}{Goal is to add De Finetti, Glivenko Cantelli, prove Kingman's representation, for next week to add stick breaking scheme PD dirichlet distribution and GEM distributions, then connect EPPF to CRP somehow}
 \begin{lemma}
     \cite[Lemma 8.11]{NeiningerHS}
+    \label{exchangeable expectations}
     \textcolor{red}{add notation explanation}
     Es sei $X = (X_{n})_{n \in \mathbb{N}}$ eine Folge austauschbarer Zufallsvariablen mit Werten in $E$ und $\phi: E \to \mathbb{R}$ messbar mit $\mathbb{E}[|\phi(X)|]< \infty$. Dann gilt für alle $n \geq l$ und $\pi \in S_n$
     \begin{enumerate}
@@ -33,15 +34,35 @@ Wir beweisen nun eine analoge Aussage zu De Finetti für Partitionen von $\mathb
 \end{lemma}
 \textcolor{red}{Form diesen Satz um} Wir benötigen lediglich den Fall $l = 1$, denn wir wollen auf die empirische Verteilungsfunktion schließen. In diesem Fall vereinfacht sich die zweite Gleichung von 2. auf $\frac{1}{n}\sum_{i=1}^{n}\phi(X_i)$. Mit dem darauffolgenden Satz in \cite{NeiningerHS}
 \begin{theorem}
+\label{exchangeable law of large numbers}
 \cite[Satz 8.12]{NeiningerHS}
 Sei $(X_n)_{n \in \mathbb{N}}$ austauschbar mit Werten in $E$ und $\phi: E^k \to \mathbb{R}$ eine messbare Funktion mit $\mathbb{E}[|\phi(X_1,X_2 ... X_k)|] < \infty$. Dann gilt
 \[
 \lim_{n \to \infty}A_n(\phi)(X) = \mathbb{E}[\phi(X)|\varepsilon] = \mathbb{E}[\phi(X)|\tau_\infty]\hspace{5pt} \mathbb{P} \hspace{5pt} \text{-f.s. und in } L_1
 \] 
 \end{theorem}
+Falls wir $\phi := \chi_{(-\infty,x]}$ für ein $x \in \mathbb{R}$ definieren, dann bekommen wir 
+\[ \lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} \chi_{(-\infty,x]}(X_i) =  \lim_{n \to \infty} \frac{1}{n}|\{i: X_i \leq x, i \leq n\}| = \mathbb{P}(X_1 \leq x |\varepsilon) \hspace{5pt}\mathbb{P}\hspace{5pt} \text{-f.s.}
+\]
+Wir definieren $F(x):= P(X_1 \leq x | \varepsilon)$ und verallgemeinern auf k-dimensionale Verteilungsfunktionen. Dazu sei $\phi:= \chi_{(-\infty,x_1]}\chi_{(-\infty,x_2]}...\chi_{(-\infty,x_k]}$ und wir bekommen analog zum 1-dimensionalen Fall aus Lemma \ref{exchangeable expectations} zusammen mit Satz \ref{exchangeable law of large numbers}
+\begin{align*}
+\lim_{n \to \infty} \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) &= \lim_{n \to \infty}\dfrac{(n-k)!}{n!}\sum_{j_1=1}^{n} \sum_{j_2=1}^{n}...\sum_{j_k=1}^{n} \phi(X_{j_1},X_{j_2}...,X_{j_k}) \\
+&= \lim_{n \to \infty} \frac{1}{n^k} \sum_{j_1=1}^{n} \phi(X_{j_1})\sum_{j_2=1}^{n} \phi(X_{j_2})...\sum_{j_k=1}^{n} \phi(X_{j_k})\\
+&= \prod_{i=1}^{k}F(x_i).
+\end{align*}
+Daraus folgt also
+\[
+\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon) = \prod_{i=1}^k F(x_i).
+\]
+Da nun $F(x)$ aber für alle $x$ $\varepsilon$ messbar ist, folgt mit der Turm Eigenschaft:
+\[
+\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k|F]  
+= \mathbb{E}[\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon)|F] = \prod_{i=1}^k F(x_i).
+\]
+
+
 Sei $\mu$ eine beliebige Verteilung mit Werten in $[0,1]$ und $(X_i)_{i \in \mathbb{N}}$ eine Folge von unabhängig identisch verteilten Zufallsvariablen mit Verteilung $\mu$.
 \begin{theorem}
     Sei $\Pi_\infty$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} \rightarrow P^\downarrow_i$ P-f.s. für $n \to \infty$ $ \forall i \geq 1$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung die durch zufälliges Sampling von einer zufälligen Distribution mit \textcolor{red}{ranked atoms} $(P^\downarrow_i, i \geq 1)$ entsteht.
 \end{theorem}
-\end{section}
 \end{section}

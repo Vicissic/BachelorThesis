@@ -1,5 +1,20 @@
-\chapter*{Chapter 1} 
+\chapter{Linear preferential trees} 
 % LTeX: language=de-DE
+%Das Kapitel beschreibt den Aufbau von \text{linear preferential trees} und wie diese zu Split Bäume 
+In diesem Kapitel werden \textit{general preferential trees} eingeführt und die Einbettung von diesen in Devroyes \textit{Split} Bäume besprochen. Wir beginnen mit der Konstruktion von den jeweiligen Bäumen.
+\\
+\\
+\textbf{\fontsize{14}{18}\selectfont Konstruktion von general preferential trees}\\
+Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{Random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_d(v)$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
+\[
+w_k = \chi k + \rho \hspace{5pt}, \chi \in \mathbb{R}\hspace{5pt} \rho > 0
+\]
+betrachtet, woher der Name \textit{linear preferential attachment trees} auch stammt. Da der Vaterknoten lediglich proportional zu der Folge von Gewichten ausgesucht wird, ändert die Skalierung der Folge nicht die Generierung der Baumstruktur, also beschränken wir die Betrachtung von den Gewichten auf 3 Spezialfälle:
+\begin{enumerate}
+    \item $\chi = 1$ ist der Fall vom \textit{general plane oriented recursive trees} \cite{panholzer2007level} 
+    \item $\chi = 0$ ist der Fall vom \textit{random recursive trees}
+    \item $\chi = -1$ ist der Fall von \textit{m-ary increasing trees}
+\end{enumerate}
 \begin{theorem}
 \cite[Lemma 3.1]{janson2019random}
    Mit den linearen Gewichten $w_k = \chi k + p $, hat ein Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$.
