@@ -29,14 +29,24 @@
 
 \titleformat{\chapter}[display]
   {\normalfont\bfseries}{}{0pt}{\Huge}
+\newtheoremstyle{nonitalic}
+  {\topsep}   % Space above
+  {\topsep}   % Space below
+  {\normalfont}  % Body font
+  {}          % Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries} % Theorem head font
+  {.}         % Punctuation after theorem head
+  { }         % Space after theorem head (\newline = linebreak)
+  {}          % Theorem head spec (can be left empty, meaning ‘normal’)
 \newtheorem{theorem}{Satz}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{Beweis}[theorem]{Beweis}
 \newtheorem{Korollar}[theorem]{Korollar}
-\newtheorem{Beispiel}[theorem]{Beispiel}
-\newtheorem*{Bemerkung*}{Bemerkung}
+\newtheorem{Beispiel}{Beispiel}
+\newtheorem{Definition}{Definition}
+\theoremstyle{nonitalic}
+\newtheorem{Bemerkung}{Bemerkung}
 \newtheorem*{Konstruktion*}{Konstruktion}
-\newtheorem{Definition}[theorem]{Definition}
 \newcommand{\PsubT}{\text{Principal subtree }}
 \newcommand{\linpreft}{\text{linear preferential attachment trees }}
 
@@ -53,6 +63,7 @@
 \input{chapters/Kingmans_theoreme}
 \input{chapters/Chinese_restaurant}
 \input{chapters/chapter1}
+\input{chapters/Anhang.tex}
 %\section{Einleitung}
 \bibliographystyle{plain}
 \bibliography{Sources/Stochastik_Literatur}

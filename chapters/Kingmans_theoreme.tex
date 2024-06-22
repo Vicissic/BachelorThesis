@@ -7,62 +7,44 @@
         \item $p(1) = 1$
         \item $\forall m < n$ und für alle Kompositionen $(n_1,...n_k)$ von $m$, gilt 
         \[ 
-        p(n_1, ... n_k) = \sum_{i=1}^{k}p(n_1, ..., n_i + 1, ..., n_k) + p(n_1,...,n_k,1)
+        p(n_1, ... n_k) = \sum_{i=1}^{k}p(n_1, ..., n_i + 1, ..., n_k) + p(n_1,...,n_k,1).
         \]
     \end{enumerate}
 \end{Definition}
-\begin{Definition}
-    Ein Block $N_{n,i}$ einer Partition von $[n]$ besitzt eine \textit{assymptotische Frequenz}, falls der Limes 
-    \[
-    P_i := \lim_{n \to \infty}\frac{|N_{n,i}|}{n}
-    \] 
-    existiert
-\end{Definition}
-\textcolor{red}{add definition of ranked atoms,  De Finetti and page 43 of Pitman.}
+Oftmals ist es nützlich, die Menge $\{|A_1|,|A_2|,...,|A_k|\}$ der Größe der Blöcke einer Partition $P_n$ von $[n]$ mit einer Folge von nicht negativen ganzen Zahlen zu identifizieren. Es gibt verschiedene Möglichkeiten dies zu machen \cite[Seite 15]{pitman2006combinatorial}. Für unsere Zwecke reicht es einer dieser Repräsentationen zu betrachten.
 \\
-Wir beweisen nun eine analoge Aussage zu De Finetti für Partitionen von $\mathbb{N}$.
-\textcolor{red}{Goal is to add De Finetti, Glivenko Cantelli, prove Kingman's representation, for next week to add stick breaking scheme PD dirichlet distribution and GEM distributions, then connect EPPF to CRP somehow}
-\begin{lemma}
-    \cite[Lemma 8.11]{NeiningerHS}
-    \label{exchangeable expectations}
-    \textcolor{red}{add notation explanation}
-    Es sei $X = (X_{n})_{n \in \mathbb{N}}$ eine Folge austauschbarer Zufallsvariablen mit Werten in $E$ und $\phi: E \to \mathbb{R}$ messbar mit $\mathbb{E}[|\phi(X)|]< \infty$. Dann gilt für alle $n \geq l$ und $\pi \in S_n$
-    \begin{enumerate}
-        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] =\mathbb{E}[\phi(X^\pi)|\varepsilon_n]  $  $\mathbb{P}$-f.s.
-        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] = \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) = A_n(\phi)(X)$ $\mathbb{P}$-f.s.
-    \end{enumerate}
-\end{lemma}
-\textcolor{red}{Form diesen Satz um} Wir benötigen lediglich den Fall $l = 1$, denn wir wollen auf die empirische Verteilungsfunktion schließen. In diesem Fall vereinfacht sich die zweite Gleichung von 2. auf $\frac{1}{n}\sum_{i=1}^{n}\phi(X_i)$. Mit dem darauffolgenden Satz in \cite{NeiningerHS}
-\begin{theorem}
-\label{exchangeable law of large numbers}
-\cite[Satz 8.12]{NeiningerHS}
-Sei $(X_n)_{n \in \mathbb{N}}$ austauschbar mit Werten in $E$ und $\phi: E^k \to \mathbb{R}$ eine messbare Funktion mit $\mathbb{E}[|\phi(X_1,X_2 ... X_k)|] < \infty$. Dann gilt
+Für eine Partition $P_n$ definieren wir $|P_n|$ als die Anzahl der Blöcke und betrachten die absteigende Folge der Größen der Blöcke $(N^\downarrow_{n,1},N^\downarrow_{n,2},...,N^\downarrow_{n,|P_n|},0,0...)$. Wir fügen also nach dem kleinsten Block $N^\downarrow_{n,|P_n|}$, eine unendliche Folge von Nullen hinzu. Wir haben also eine bijektive Identifizierung von der Menge der Partitionen von $n$ zur folgenden Menge der Nichtnegativen natürlichen Zahlen:
 \[
-\lim_{n \to \infty}A_n(\phi)(X) = \mathbb{E}[\phi(X)|\varepsilon] = \mathbb{E}[\phi(X)|\tau_\infty]\hspace{5pt} \mathbb{P} \hspace{5pt} \text{-f.s. und in } L_1
+\nabla := \{(n_j)_{1\leq j \leq \infty}: n_1 \geq n_2 \geq ... \geq 0 \text{ und } \sum_{j=1}^{\infty}{n_j} = n\}
 \] 
+
+Das Ziel ist es nun, eine ähnliche Aussage wie im Satz von de Finetti für Partitionen von $\mathbb{N}$ zu formulieren. Dazu starten wir mit dem Satz selbst.
+\begin{theorem}\cite[Theorem 3.1]{aldous2006ecole}{\textbf{De Finetti}}\\
+    Eine austauschbare Folge $(X_i)_{i \in \mathbb{N}}$ ist eine Mischung von i.i.d Folgen.
 \end{theorem}
-Falls wir $\phi := \chi_{(-\infty,x]}$ für ein $x \in \mathbb{R}$ definieren, dann bekommen wir 
-\[ \lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} \chi_{(-\infty,x]}(X_i) =  \lim_{n \to \infty} \frac{1}{n}|\{i: X_i \leq x, i \leq n\}| = \mathbb{P}(X_1 \leq x |\varepsilon) \hspace{5pt}\mathbb{P}\hspace{5pt} \text{-f.s.}
-\]
-Wir definieren $F(x):= P(X_1 \leq x | \varepsilon)$ und verallgemeinern auf k-dimensionale Verteilungsfunktionen. Dazu sei $\phi:= \chi_{(-\infty,x_1]}\chi_{(-\infty,x_2]}...\chi_{(-\infty,x_k]}$ und wir bekommen analog zum 1-dimensionalen Fall aus Lemma \ref{exchangeable expectations} zusammen mit Satz \ref{exchangeable law of large numbers}
+\begin{Bemerkung}
+    Für die Zwecke dieser Arbeit reicht es \textit{eine Mischung von i.i.d Folgen}, als \glqq es existiert ein zufälliges W-Maß $\mu$, sodass bedingt auf $\mu$, die $X_i$ i.i.d sind\grqq, zu interpretieren. Auf die formale Definition verweisen wir auf \cite[Abschnitt 1.2]{aldous2006ecole}.
+\end{Bemerkung}
+\begin{Bemerkung}
+    Die Äquivalenz dieser Formulierung von de Finetti zu der Formulierung \textit{i.i.d gegeben einer $\sigma$-Algebra} wird in \cite[Lemma 2.18]{aldous2006ecole} bewiesen.  
+\end{Bemerkung}
+Sei $\mu$ eine zufällige Verteilung mit Werten in $[0,1]$ und $(X_i)_{i \in \mathbb{N}}$ eine Folge von unabhängig identisch verteilten Zufallsvariablen mit Verteilung $\mu$. Sei $\Pi(\omega)$ die zufällige Partition mit Komponenten $\{i| X_i(\omega) = x\},  0 \leq x \leq 1$. Die Bezeichnung von diesen austauschbaren\footnote{Die Austauschbarkeit folgt aus Betrachtung von $\Pi_{i,j} := \{\omega | i \text{ und } j \text{ in derselben Komponente von } \Pi(\omega)\}$ und aus der Definition der Austauschbarkeit: $\Pi$ ist austauschbar genau dann, wenn $\Pi_{i,j} \stackrel{\mathcal{L}}{=} \Pi_{\pi(i),\pi(j)} \text{für alle Permutationen }\pi_n \text{auf }[n] \text{ gilt}$} Prozess als \textit{Paintbox Prozess} stammt aus der Vorstellung, dass man Objekte $\{1,2 ...\}$ mit Farben $X_i$ markiert (Die Zahlen $x \in [0,1]$ interpretiert man als Farben-Spektrum). 
+Man erhält somit eine Partition von Mengen von gleichfarbigen Objekten. Die Verteilung der zufälligen Partition $\Pi$ in dieser Konstruktion hängt nur von den Größen der Atome von $\mu$ ab ($\{x \in [0,1] | \mu(x) > 0 \}$). Falls wir $p^\downarrow_j := \mu(x_j)$ definieren, sodass die $x_j$ die Atome von $\mu$ sind und $p_j^\downarrow$ eine absteigende Folge ist, wird es sich als hilfreich erweisen Verteilungen zu betrachten, deren absteigende Folge von Atomen eine Folge von Zahlen ist, dazu definieren wir folgende Abbildung \textcolor{red}{change previous sentence}:
 \begin{align*}
-\lim_{n \to \infty} \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) &= \lim_{n \to \infty}\dfrac{(n-k)!}{n!}\sum_{j_1=1}^{n} \sum_{j_2=1}^{n}...\sum_{j_k=1}^{n} \phi(X_{j_1},X_{j_2}...,X_{j_k}) \\
-&= \lim_{n \to \infty} \frac{1}{n^k} \sum_{j_1=1}^{n} \phi(X_{j_1})\sum_{j_2=1}^{n} \phi(X_{j_2})...\sum_{j_k=1}^{n} \phi(X_{j_k})\\
-&= \prod_{i=1}^{k}F(x_i).
+L: \mathcal{M}_1([0,1]) &\to \nabla \\
+\mu \hspace{20pt} &\to (p_j^\downarrow)_{j \in \mathbb{N}},
 \end{align*}
-Daraus folgt also
-\[
-\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon) = \prod_{i=1}^k F(x_i).
-\]
-Da nun $F(x)$ aber für alle $x$ $\varepsilon$ messbar ist, folgt mit der Turm Eigenschaft:
-\[
-\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k|F]  
-= \mathbb{E}[\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon)|F] = \prod_{i=1}^k F(x_i).
-\]
-
-
-Sei $\mu$ eine beliebige Verteilung mit Werten in $[0,1]$ und $(X_i)_{i \in \mathbb{N}}$ eine Folge von unabhängig identisch verteilten Zufallsvariablen mit Verteilung $\mu$.
+und nennen den oben beschrieben Prozess zur Verteilung $\mu$ den $L(\mu) = (p_j^\downarrow)_{j \in \mathbb{N}}$ \textit{-Paintbox Prozess}
 \begin{theorem}
-    Sei $\Pi_\infty$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} \rightarrow P^\downarrow_i$ P-f.s. für $n \to \infty$ $ \forall i \geq 1$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung die durch zufälliges Sampling von einer zufälligen Distribution mit \textcolor{red}{ranked atoms} $(P^\downarrow_i, i \geq 1)$ entsteht.
+    Sei $\Pi := (\Pi_n)_{n \in \mathbb{N}}$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} $ $ \forall i \geq 1$ P-f.s. für $n \to \infty$ gegen ein $P^\downarrow_i$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung von einem $(P_i^\downarrow, i \geq 1)$ \textit{Paintbox Prozess}.
 \end{theorem}
+\begin{proof}
+Sei $(U_i)_{i \in \mathbb{N}}$ eine Folge unabhängig in $[0,1]$ uniform verteilter Zufallsvariablen. Wir definieren 
+\begin{align*}
+F_i(\omega) &= \min{\{j| i \text{ und } j \text{ sind in der gleichen Komponente von }  \Pi(\omega)\}} \leq i \\
+Z_i &= U_{F_i}.
+\end{align*}
+$\Pi(\omega)$ ist also eine Partition mit Komponenten $\{i| Z_i(\omega) = z\}$ für $0 \leq z \leq 1$. $(Z_i)_{i \in \mathbb{N}}$ ist austauschbar, da wir $(Z_i)_{i \in \mathbb{N}} = g((\Pi_i)_{i \in \mathbb{N}},(U_i)_{i \in \mathbb{N}})$ für eine Abbildung $g$ auffassen können, und da Abbildungen austauschbarer Folgen austauschbar sind\footnote{Man beachte, dass hier die Folge $U_i$ auch von $\Pi$ unabhgängig sein sollte.}. Nach De Finetti gibt es ein zufälliges Maß $\alpha$, sodass bedingt auf $\alpha = \mu$, die $Z_i$ unabhängig identisch wie $\mu$ verteilt sind. Dies entspricht aber genau dem vorher beschriebenen $L(\mu)$\textit{-Paintbox Prozess} und die zweite Behauptung ist gezeigt. Für die erste Behauptung nutzen wir das starke Gesetz großer Zahlen. Dafür sei $\phi$ ein beliebiges Maß mit $L(\phi) = (p^\downarrow_i)_{i \in \mathbb{N}}$ und $X_i$ i.i.d $\phi$ verteilt. Dann gilt nach dem Gesetz $\frac{1}{n}\sum_{i=1}^{n}\chi_{\{X_i = x\}} \rightarrow \mathbb{P}(X_i = x) = \phi(x)$ P-f.s. für $n \to \infty$. Somit folgt auch $L_n(\Pi_n)...$ und wir sind fertig.\textcolor{red}{finish this proof and adjust this whole chapter.}
+\end{proof}
+
 \end{section}

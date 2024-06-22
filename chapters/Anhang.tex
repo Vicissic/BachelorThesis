@@ -1,0 +1,54 @@
+\begin{section}{Current tests}
+    
+\textcolor{red}{add Kingman partial exchangeability}   
+Wir definieren für eine Sequenz $(x_1,x_2...x_n)$ eine Abbildung $\Pi: \mathbb{R}^n \to [n]$, wo wir die Blöcke der Partition mit der zufälligen Äquivalenzrelation $i \sim j$ genau dann, wenn $x_i = x_j$ assoziieren.
+\begin{Definition}
+    Ein Block $N_{n,i}$ einer Partition von $[n]$ besitzt eine \textit{assymptotische Frequenz}, falls der Limes 
+    \[
+    P_i := \lim_{n \to \infty}\frac{|N_{n,i}|}{n}
+    \] 
+    existiert
+\end{Definition}
+\textcolor{red}{add definition of ranked atoms,  De Finetti and page 43 of Pitman.}
+\\
+Wir beweisen nun eine analoge Aussage zu De Finetti für Partitionen von $\mathbb{N}$.
+\textcolor{red}{Goal is to add De Finetti, Glivenko Cantelli, prove Kingman's representation, for next week to add stick breaking scheme PD dirichlet distribution and GEM distributions, then connect EPPF to CRP somehow}
+\begin{lemma}
+    \cite[Lemma 8.11]{NeiningerHS}
+    \label{exchangeable expectations}
+    \textcolor{red}{add notation explanation}
+    Es sei $X = (X_{n})_{n \in \mathbb{N}}$ eine Folge austauschbarer Zufallsvariablen mit Werten in $E$ und $\phi: E \to \mathbb{R}$ messbar mit $\mathbb{E}[|\phi(X)|]< \infty$. Dann gilt für alle $n \geq l$ und $\pi \in S_n$
+    \begin{enumerate}
+        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] =\mathbb{E}[\phi(X^\pi)|\varepsilon_n]  $  $\mathbb{P}$-f.s.
+        \item $ \mathbb{E}[\phi(X)|\varepsilon_n] = \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) = A_n(\phi)(X)$ $\mathbb{P}$-f.s.
+    \end{enumerate}
+\end{lemma}
+\textcolor{red}{Form diesen Satz um} Wir benötigen lediglich den Fall $l = 1$, denn wir wollen auf die empirische Verteilungsfunktion schließen. In diesem Fall vereinfacht sich die zweite Gleichung von 2. auf $\frac{1}{n}\sum_{i=1}^{n}\phi(X_i)$. Mit dem darauffolgenden Satz in \cite{NeiningerHS}
+\begin{theorem}
+\label{exchangeable law of large numbers}
+\cite[Satz 8.12]{NeiningerHS}
+Sei $(X_n)_{n \in \mathbb{N}}$ austauschbar mit Werten in $E$ und $\phi: E^k \to \mathbb{R}$ eine messbare Funktion mit $\mathbb{E}[|\phi(X_1,X_2 ... X_k)|] < \infty$. Dann gilt
+\[
+\lim_{n \to \infty}A_n(\phi)(X) = \mathbb{E}[\phi(X)|\varepsilon] = \mathbb{E}[\phi(X)|\tau_\infty]\hspace{5pt} \mathbb{P} \hspace{5pt} \text{-f.s. und in } L_1
+\] 
+\end{theorem}
+Falls wir $\phi := \chi_{(-\infty,x]}$ für ein $x \in \mathbb{R}$ definieren, dann bekommen wir 
+\[ \lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} \chi_{(-\infty,x]}(X_i) =  \lim_{n \to \infty} \frac{1}{n}|\{i: X_i \leq x, i \leq n\}| = \mathbb{P}(X_1 \leq x |\varepsilon) \hspace{5pt}\mathbb{P}\hspace{5pt} \text{-f.s.}
+\]
+Wir definieren $F(x):= P(X_1 \leq x | \varepsilon)$ und verallgemeinern auf k-dimensionale Verteilungsfunktionen. Dazu sei $\phi:= \chi_{(-\infty,x_1]}\chi_{(-\infty,x_2]}...\chi_{(-\infty,x_k]}$ und wir bekommen analog zum 1-dimensionalen Fall aus Lemma \ref{exchangeable expectations} zusammen mit Satz \ref{exchangeable law of large numbers}
+\begin{align*}
+\lim_{n \to \infty} \dfrac{1}{n!}\sum_{\pi \in S_n} \phi(X^\pi) &= \lim_{n \to \infty}\dfrac{(n-k)!}{n!}\sum_{j_1=1}^{n} \sum_{j_2=1}^{n}...\sum_{j_k=1}^{n} \phi(X_{j_1},X_{j_2}...,X_{j_k}) \\
+&= \lim_{n \to \infty} \frac{1}{n^k} \sum_{j_1=1}^{n} \phi(X_{j_1})\sum_{j_2=1}^{n} \phi(X_{j_2})...\sum_{j_k=1}^{n} \phi(X_{j_k})\\
+&= \prod_{i=1}^{k}F(x_i).
+\end{align*}
+Daraus folgt also
+\[
+\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon) = \prod_{i=1}^k F(x_i).
+\]
+Da nun $F(x)$ aber für alle $x$ $\varepsilon$ messbar ist, folgt mit der Turm Eigenschaft:
+\[
+\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k|F]  
+= \mathbb{E}[\mathbb{P}(X_1 \leq x_1, X_2 \leq x_2..., X_k \leq x_k| \varepsilon)|F] = \prod_{i=1}^k F(x_i).
+\]
+
+\end{section}
