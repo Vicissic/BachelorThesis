@@ -8,7 +8,7 @@ Nachdem $n$ Gäste $k$ Tische besetzt haben, besetzt ein neuer Kunde einen Tisch
 Damit diese tatsächlichen Wahrscheinlichkeiten entsprechen, müssen $\alpha$ und $\theta$ folgende Wahrscheinlichkeitsregeln erfüllen. \\
 Das Haupttheorem ist nun folgendes.
 \begin{theorem}
-    Für jede der Parameter $(\alpha,\theta)$, welche die oben genannten Voraussetzungen erfüllen, generiert das CRP eine austauschbare zufälligen Partition von $\mathbb{N}$. Die dazu gehörende EPPF (siehe Def. 3) ist 
+    Für jede der Parameter $(\alpha,\theta)$, welche die oben genannten Voraussetzungen erfüllen, generiert das CRP eine austauschbare  Partition von $\mathbb{N}$. Die dazu gehörende EPPF (siehe Def. 3) ist 
     \begin{equation}
    p_{\alpha,\theta}(n_1,...,n_k) = \frac{\displaystyle \prod_{i=0}^{k-2}(\theta + \alpha + i\alpha)\prod_{j=1}^{k}\prod_{r=1}^{n_i-1}(r-\alpha)}{\displaystyle\prod_{i=1}^{n-1}(\theta  + i)}.
     \end{equation}
@@ -19,7 +19,7 @@ Das Haupttheorem ist nun folgendes.
     Wobei $W_i$ unabhängig voneinander, nach $\beta(1 - \alpha, \theta + i\alpha)$ verteilt sind und $\bar{W_i}:= 1 - W_i$.
 \end{theorem}  
 \begin{proof}
-    
+   Wir beginnen mit der Austauschbarkeit. Dafür prüfen wir zuerst, dass $p_{\alpha,\theta}$ tatsächlich unserer EPPF entspricht. Wir nutzen \ref{Austauschbar Lemma}.
 \end{proof}
 
 \end{section}

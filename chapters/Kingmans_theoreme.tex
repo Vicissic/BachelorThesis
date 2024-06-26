@@ -1,16 +1,5 @@
 \begin{section}{Kingman Paintbox representation}
 % LTeX: language=de-DE
-\begin{Definition}{Konsistenz}\\
-    Wir nennen eine Folge von austauschbaren zufälligen Partitionen $(\Pi_n)$ \textit{konsistent}, falls die Restriktion $\Pi_{m,n}$ von $\Pi_m$ zu $[n]$ für alle $m > n$ die gleiche Verteilung hat wie $\Pi_m$. Alle zufälligen Partitionen auf $\mathbb{N}$ sind konsistent.
-    Äquivalent dazu folgt aus der Definition der EPPF (\ref{Austauschbarkeit}), dass eine symmetrische Funktion  $p: \cup_{i=1}^{\infty} \mathbb{N}^k \to [0,1]$ existiert, mit 
-    \begin{enumerate}
-        \item $p(1) = 1$
-        \item $\forall m < n$ und für alle Kompositionen $(n_1,...n_k)$ von $m$, gilt 
-        \[ 
-        p(n_1, ... n_k) = \sum_{i=1}^{k}p(n_1, ..., n_i + 1, ..., n_k) + p(n_1,...,n_k,1).
-        \]
-    \end{enumerate}
-\end{Definition}
 Oftmals ist es nützlich, die Menge $\{|A_1|,|A_2|,...,|A_k|\}$ der Größe der Blöcke einer Partition $P_n$ von $[n]$ mit einer Folge von nicht negativen ganzen Zahlen zu identifizieren. Es gibt verschiedene Möglichkeiten dies zu machen \cite[Seite 15]{pitman2006combinatorial}. Für unsere Zwecke reicht es einer dieser Repräsentationen zu betrachten.
 \\
 Für eine Partition $P_n$ definieren wir $|P_n|$ als die Anzahl der Blöcke und betrachten die absteigende Folge der Größen der Blöcke $(N^\downarrow_{n,1},N^\downarrow_{n,2},...,N^\downarrow_{n,|P_n|},0,0...)$. Wir fügen also nach dem kleinsten Block $N^\downarrow_{n,|P_n|}$, eine unendliche Folge von Nullen hinzu. Wir haben also eine bijektive Identifizierung von der Menge der Partitionen von $n$ zur folgenden Menge der Nichtnegativen natürlichen Zahlen:

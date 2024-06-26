@@ -17,13 +17,41 @@
     \textnormal{(Austauschbarkeit)}
     \label{Austauschbarkeit}
     \begin{enumerate}
-        \item Eine zufällige Partition $\Pi_n$ von $[n]$ heißt Austauschbar, falls für jede Partition $\{ A_1 ... A_n\}$ von $[n]$
+        \item Eine zufällige Partition $\Pi_n$ von $[n]$ heißt partiell Austauschbar, falls für jede Partition $\{ A_1 ... A_k\}$ von $[n]$ in Reihenfolge ihres Erscheinens\footnote{\textit{In Reihenfolge ihres Erscheinens} bedeutet $1 \in A_1$, und für alle $2 \leq i \leq k$, das erste Element von $[n]\setminus \cup_{j=1}^{i-1}A_j$ zu $A_i$ gehört}.
         \[ 
             \mathbb{P}(\Pi_n = \{ A_1 ... A_k\}) = p(|A_1|, ... |A_k|)
         \]  
-        für eine symmetrische Funktion p von Kompositionen $(n_1, ..., n_k)$ von $n$. Diese Funktion wird auch EPPF (Exchangeable partition probability function) bezeichnet.
-
+        für eine Funktion p von Kompositionen $\textbf{n}:= (n_1, ..., n_k)$ von $n$. Diese Funktion wird auch PEPF (Partially Exchangeable Probability Function) bezeichnet.
+        \item Falls die Funktion $p$ zusätzlich noch symmetrisch ist, so ist die zufällige Partition $\Pi_n$ Austauschbar und man bezeichnet $p$ als \textit{EPPF} (Exchangeable Partition Probability Function)
     \end{enumerate}
 \end{Definition}
+
+\begin{Definition}{Konsistenz}\\
+    Wir nennen eine Folge von austauschbaren zufälligen Partitionen $(\Pi_n)$ \textit{konsistent}, falls die Restriktion $\Pi_{m,n}$ von $\Pi_m$ zu $[n]$ für alle $m > n$ die gleiche Verteilung hat wie $\Pi_m$. Alle zufälligen Partitionen auf $\mathbb{N}$ sind konsistent.
+\end{Definition}
+\begin{lemma}
+    Sei $\Pi_n$ eine partiell austauschbare zufällige Partition von $[n]$ mit \textit{PEPF} $p(\textbf{n})$ und $\Pi_m$ die Restriktion von $\Pi_n$ auf $[m], m \in \{1...n\}$, dann gilt mit $\textbf{m} := (m_1,...,m_k)\in \bigcup_{i = 1 }^{n} \mathbb{N}^i$, $\sum_{i=1}^{k}m_i = m$ und $\textbf{m}^{i+} = \textbf{m} + e_i, i \in \{1...k+1\}$ für einen Einheitsvektor $e_i$:
+\begin{center} 
+    $\Pi_m$ ist partiell Austauschbar mit PEPF $p(\textbf{m}):=  \sum_{j=1}^{k+1} p(\textbf{m}^{j+})$.
+\end{center}
+\end{lemma}
+\begin{proof}
+    Triviale Induktion
+\end{proof}
+\begin{Bemerkung}
+    Es wird sich später erweisen, dass wir für bestimmte Konstruktionen von austauschbaren Partitionen von $\mathbb{N}$ die \textit{EPPF} explizit nachprüfen sollen. Dafür ist folgendes Lemma nützlich.
+\end{Bemerkung}
+\begin{lemma}
+    \label{Austauschbar Lemma}
+    Sei $N_m$, $1 \leq m \leq n$ ein zufälliges Element in der Größe der Klassen einer Partition $\Pi_m$ in Reihenfolge ihres Erscheinens. Falls $(N_1,...,N_n)$ eine Markov Kette ist mit 
+    \[
+    \mathbb{P}(N_{m+1} = \textbf{n}^{i+} | N_{m} = \textbf{n}) = \frac{p(\textbf{n}^{i+})}{p(\textbf{n})} 
+    \]
+   für ein $p: \bigcup_{i = 1}^{n}\mathbb{N}^i \rightarrow [0,1]$,$p(1) = 1$, dann ist  
+    $\Pi_n$ partiell Austauschbar mit \textit{PEPF} $p$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
 
 \end{section}
