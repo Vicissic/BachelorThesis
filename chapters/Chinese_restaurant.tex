@@ -19,6 +19,105 @@ Die Verteilung, die durch diese zwei Regeln entsteht, kann durch einen zufällig
 Wir definieren nun $\sigma_n: [n] \rightarrow [n]$ mithilfe dieser Regeln, sodass falls Kunde $i$ links von Kunde $j$ sitzt, $\sigma_n(i) = j$ und falls Kunde $i$ alleine sitzt $\sigma_n(i) = i$. Dass diese Folge von
 Permutationen die ersten 2 Regeln befolgt, ist durch eine triviale Induktion ersichtlich. 
 \\
-Die Folge, die durch die Zyklen von den Permutationen generiert werden, ist austauschbar und konsistent. Diese erfüllt also die Voraussetzungen von  
+Die Folge, die durch die Zyklen von den Permutationen generiert werden, ist austauschbar und konsistent, generiert somit eine austauschbare Folge $\Pi_\infty$ von $\mathbb{N}$.
     %\item Falls zum Zeitpunkt des Eintritts des $i$-ten Kundes $k$ Tische besetzt sind, so setzt sich dieser an Tisch $j \in {1...k}$ mit Wahrscheinlichkeit $\frac{n_i-\alpha}{n+\theta}$ und an Tisch $k+1$ mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$
+\end{section}
+\begin{section}{Verallgemeinerte CRP}
+Die einfache Konstruktion vom \textit{Chinese Restaurant Process} lässt sich recht einfach verallgemeinern, sodass eine größere Klasse von austauschbaren Partitionen betrachtet werden können. Anstatt, wie im einfachen Fall, nur uniform ein Sitzplatz auszuwählen (Regel 2), wird in der allgemeinen Form des Prozesses eine beliebige Folge $(P_1,P_2...)$ von Zufallsvariablen, mit $\sum_{i\geq1}P_i \leq 1$ und $P_i \geq 0$ gewählt, und die zweite Regel mit folgender ersetzt:
+\begin{itemize} 
+    \item Falls zum Zeitpunkt des Eintritts des i-ten Kundes $k$ Tische besetzt sind, so setzt sich dieser mit Wahrscheinlichkeit $P_j, j \in \{1...k\}$ an Tisch $j$ und mit Wahrscheinlichkeit $1 - \sum_{j=1}^{k}P_j$ an einen neuen Tisch.
+\end{itemize}
+Dieser Prozess erlaubt es nicht nur jede austauschbare Folge zu konstruieren, sondern tatsächlich jede partiell austauschbare Folge zu konstruieren. Beruhend auf dieser Konstruktion, hat Pitman \cite{pitman1995exchangeable} folgende Variation von \textit{Kingman's Representation} bewiesen
+\begin{theorem}
+    \label{pitman}
+    Sei $\Pi_\infty$ eine zufällige Partition von $\mathbb{N}$, dann sind folgende Äquivalent
+    \begin{enumerate}
+        \item $\Pi_\infty$ ist partiell Austauschbar
+        \item Falls wir die Tische mit Partitionen identifizieren, dann wird $\Pi_\infty$ gegeben $(P_1,P_2...)$ durch den verallgemeinerten \textit{Chinese Restaurant Process} generiert. Also $\forall{n} \in \mathbb{N}$ bedingt gegeben $(P_1,P_2...)$ und $\Pi_n = \{A_1,A_2,...A_k\}$, mit $A_i, i \in \{1...k\}$ in Reihenfolge ihres Erscheinens, $\Pi_{n+1}$ eine Erweiterung von $\Pi_n$ ist, wobei $n+1$ zur Klasse $A_i$ mit Wahrscheinlichkeit $P_i$ angefügt wird und zur einer neuen Klasse $A_{k+1}$ mit Wahrscheinlichkeit $1 - \sum_{i=1}^{k}P_i$ angefügt wird. 
+    \end{enumerate}
+Weiter sind die $P_i$ in 2. fast sicher eindeutig und gleich der fast sicheren asymptotischen Frequenz der Klassen $A_i$, also
+\[ 
+\frac{|A_i \cap [n]|}{n} \to P_i \hspace{10pt} \text{P -f.s.} \hspace{5pt} \text{für } n \to \infty.
+\]
+\end{theorem}
+\begin{proof}
+    Dieser Satz wird in \cite{pitman1995exchangeable} bewiesen.
+\end{proof}
+\begin{Bemerkung}
+    Der Vorteil von Pitmans Charakterisierung von partiell Austauschbaren Folgen gegenüber \textit{Kingman's Representation} ist die Bestimmung der Verteilung $(P_1,P_2...)$ im Vergleich zu der sortierten Folge $(P^\downarrow_1,P^\downarrow_2,...)$, welche durch die Konstruktion vom \textit{Chinese Restaurant Process} erleichtert wird. Mithilfe vom Korollar \ref{korollar pitman} lässt sich die $PEPF$, bzw. $EPPF$ im austauschbaren Fall, recht einfach berechnen.
+\end{Bemerkung}
+\begin{Korollar}
+    \label{korollar pitman}
+    Die PEPF $p$ von Satz \ref{pitman} hat Form
+    \begin{equation}
+    \label{PEPF expected value}    
+    p(n_1,n_2,...,n_k) = \mathbb{E}\left[\prod_{i=1}^{k}P_i^{n_i-1}\prod_{i=1}^{k-1}(1-\sum_{j=1}^{i}P_j)\right].
+    \end{equation}
+\end{Korollar}
+\begin{proof}
+    Nach Definition \ref{Austauschbarkeit}, gilt mit $\mathbb{A}_n:= \{A_1,...A_k\}$ und $\mathbb{A}_{n-1}:= \mathbb{A}_n \cap [n-1]$ und Satz \ref{pitman}
+    \begin{align*}
+    p(|A_1|,...,|A_k|) &= \mathbb{P}(\Pi_n = \mathbb{A}) \\
+    &= \mathbb{E}\left[\mathbb{P}(\Pi_n = \mathbb{A}_n|(P_1,P_2...))\right]  \\
+    &= \mathbb{E}\left[\mathbb{P}(\Pi_n = \mathbb{A}_n|\Pi_{n-1} = \mathbb{A}_{n-1},(P_1,P_2...))\mathbb{P}(\Pi_{n-1} = \mathbb{A}_{n-1}|(P_1,P_2...))\right] \\
+    &=... =  \mathbb{E}\left[\prod_{i=1}^{k}P_i^{n_i-1}\prod_{i=1}^{k-1}(1-\sum_{j=1}^{i}P_j)\right].
+\end{align*}
+\end{proof}
+Mithilfe einer anderen Konstruktion von austauschbaren $\mathbb{N}$ \cite[Konstruktion 16]{pitman1995exchangeable}, stellt sich heraus, dass die $P_i$ in Form von einer \textit{Residual allocation Model (RAM)} sich darstellen lassen. Das bedeutet, dass unabhängige Zufallsvariablen $W_i, i \geq 1, W_i \in [0,1]$ existieren, sodass die $P_i$ aus Satz \ref{pitman} durch $W_i$
+\begin{equation}
+    \label{RAM probability}
+    P_i = W_i\prod_{j=1}^{i-1} (1-W_j)
+\end{equation}
+darstellen lassen. Korollar \ref{korollar pitman} ändert sich somit zu
+\begin{Korollar}
+    Die PEPF $p$ von Satz \ref{pitman} hat Form
+    \[
+    p(n_1,n_2,...,n_k) = \mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}(1-W_i)^{\sum_{j=i+1}^{k}n_j}\right].
+    \]
+\end{Korollar}
+\begin{proof}
+   Wir nutzen \ref{RAM probability} und Induktion um zuerst
+   \[
+    \prod_{i=1}^{n}(1-W_i) = 1 - \sum_{i=1}^{n}P_i
+   \] 
+   zu zeigen.\\
+   $n = 1$: klar. \\
+   Sei die Aussage für $n$ Wahr, dann gilt 
+   \begin{align*}
+    1 - \sum_{i=1}^{n+1}P_i &\overset{I.A.}{=} \prod_{i=1}^{n}(1-W_i) - P_{n+1}\\
+    &=  \prod_{i=1}^{n}(1-W_i) - W_{n+1}\prod_{i=1}^{n}(1-W_i) \\
+    &= \prod_{i=1}^{n+1}(1-W_i).
+   \end{align*}
+   Eingesetzt in \ref{PEPF expected value}, liefert 
+   \begin{align*}
+    p(n_1,n_2,...,n_k) &= \mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}\prod_{j=1}^{i-1}(1-W_j)^{n_i-1}\prod_{i=1}^{k-1}\prod_{j=1}^{i}(1-W_j)\right]\\
+    &= \mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}\prod_{j=1}^{i-1}(1-W_j)^{n_i-1}\prod_{i=1}^{k}\prod_{j=1}^{i-1}(1-W_j)\right]\\
+    &= \mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}\prod_{j=1}^{i-1}(1-W_j)^{n_i}\right]\\
+    &=\mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}(1-W_i)^{\sum_{j=i+1}^{k}n_j}\right].
+   \end{align*}  
+
+\end{proof}
+
+Nachdem $n$ Gäste $k$ Tische besetzt haben, besetzt ein neuer Kunde einen Tisch nach folgenden Regeln:
+\begin{enumerate}
+    \item Der Gast besetzt ein Tisch $1 \leq i \leq k$ mit Wahrscheinlichkeit $\frac{n_i-\alpha}{n + \theta}$ 
+    \item Der Gast besetzt einen neuen Tisch $k+1$ mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$.
+\end{enumerate}
+Damit diese tatsächlichen Wahrscheinlichkeiten entsprechen, müssen $\alpha$ und $\theta$ folgende Wahrscheinlichkeitsregeln erfüllen. \\
+Das Haupttheorem ist nun folgendes.
+\begin{theorem}
+    Für jede der Parameter $(\alpha,\theta)$, welche die oben genannten Voraussetzungen erfüllen, generiert das CRP eine austauschbare  Partition von $\mathbb{N}$. Die dazu gehörende EPPF (siehe Def. 3) ist 
+    \begin{equation}
+   p_{\alpha,\theta}(n_1,...,n_k) = \frac{\displaystyle \prod_{i=0}^{k-2}(\theta + \alpha + i\alpha)\prod_{j=1}^{k}\prod_{r=1}^{n_i-1}(r-\alpha)}{\displaystyle\prod_{i=1}^{n-1}(\theta  + i)}.
+    \end{equation}
+    Die zugehörigen asymptotischen Frequenzen, in \textcolor{red}{size biased order of least elements} kann folgendermaßen repräsentiert werden.
+    \[
+    (\tilde{P_1},\tilde{P_2},\tilde{P_3}...) = (W_1,\bar{W_1}W_2,\bar{W_1}\bar{W_2}W_3...).
+    \]
+    Wobei $W_i$ unabhängig voneinander, nach $\beta(1 - \alpha, \theta + i\alpha)$ verteilt sind und $\bar{W_i}:= 1 - W_i$.
+\end{theorem}  
+\begin{proof}
+   Wir beginnen mit der Austauschbarkeit. Dafür prüfen wir zuerst, dass $p_{\alpha,\theta}$ tatsächlich unserer EPPF entspricht. Wir nutzen Lemma \ref{Austauschbar Lemma} und beachten, dass $p(1) = 1$. Weiter sind die Übergangswahrscheinlichkeiten von $p_{\alpha,\theta}$ genau die Übergangswahrscheinlichkeiten von $N_m$ aus dem Lemma. Nach Definition \ref{Austauschbarkeit} ist die \textit{PEPF} $p$ symmetrisch, also ist die Konstruktion austauschbar.
+\end{proof}
+
 \end{section}
