@@ -5,7 +5,7 @@ In diesem Kapitel werden \textit{general preferential trees} eingeführt und die
 \\
 \\
 \textbf{\fontsize{14}{18}\selectfont Konstruktion von general preferential trees}\\
-Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{Random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_d(v)$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
+Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{Random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_{d(v)}$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
 \[
 w_k = \chi k + \rho \hspace{5pt}, \chi \in \mathbb{R}\hspace{5pt} \rho > 0
 \]
@@ -27,6 +27,7 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
     \]
 \end{proof}
 \begin{theorem} \cite[Theorem 3.2]{janson2019random}
+    \label{linpreft Grenzwert}
     Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty = $ eine Folge von \linpreft, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet. Sei $N_j(n) := |T^j_n|$, die Größe des j-ten \PsubT von $T_n$. Dann gilt 
     \[ 
         \forall j \geq 1  \hspace{6pt} \frac{N_j(n)}{n}  \rightarrow P_j \hspace{6pt} \text{für} \hspace{6pt} n \rightarrow \infty \hspace{6pt} \text{P-f.s.}.
@@ -40,6 +41,30 @@ Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{
         \item Falls der Knoten mit Beschriftung $i$ an die Wurzel angehängt wird, so fügen wir zur bestehenden Zyklus-Dekomposition, die Fixpunkt-Permutation $(i)$ hinzu.
         \item Falls der Knoten mit Beschriftung $i$ an ein anderen Knoten mit Beschriftung $j$, $j \neq 0$ angehängt wird, so fügen wir in den Zyklus $C$, welcher $j$ enthält, $i$ direkt nach $j$ hinzu. Bedeutet also, falls im ursprünglichen Zyklus $j \rightarrow k$ abgebildet wurde, im nächsten Schritt $j \rightarrow i \rightarrow k$ abgebildet wird.
     \end{enumerate}
-Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welche durch diese Konstruktion entsteht, bijektiv ist und somit können wir die Theorie der \textit{austauschbaren Partitionen} anwenden, insbesondere also Satz \ref{Main theorem CRP}. Dafür betrachten wir die bedingten Wahrscheinlichkeiten, dass der $n+1$-Knoten an principal Subtree $i$ angefügt wird, gegeben er enthält bereits $n_i$ Knoten. Nach \ref{Gewichte Satz}, hat dieser Teilbaum Gesamtgewicht $n_i(\chi + \rho) - \chi = n_i - \chi$ und der gesamte Baum Gewicht $m-\chi$. Die bedingten Wahrscheinlichkeiten entsprechen also denen in der Konstruktion von einem $(\chi,\rho)$ \textit{Chinese Restaurant Process} und die Aussage folgt direkt aus \ref{Main theorem CRP}.
+Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welche durch diese Konstruktion entsteht, bijektiv ist und somit können wir die Theorie der \textit{austauschbaren Partitionen} anwenden, insbesondere also Satz \ref{Main theorem CRP}. Dafür betrachten wir die bedingten Wahrscheinlichkeiten, dass der $n+1$-Knoten an principal Subtree $i$ angefügt wird, gegeben er enthält bereits $n_i$ Knoten. Nach Lemma \ref{Gewichte Satz}, hat dieser Teilbaum Gesamtgewicht $n_i(\chi + \rho) - \chi = n_i - \chi$ und der gesamte Baum Gewicht $m-\chi$. Die bedingten Wahrscheinlichkeiten entsprechen also denen in der Konstruktion von einem $(\chi,\rho)$ \textit{Chinese Restaurant Process} und die Aussage folgt direkt aus Satz \ref{Main theorem CRP}.
 \end{proof}
+\begin{Bemerkung}
+    Satz \ref{linpreft Grenzwert} wird eine zentrale Rolle bei der Bestimmung des \textit{Split Vektors} in der Einbettung von \textit{linear preferential attachment trees} in Devroyes Split Bäume spielen. Wir führen zuerst den Begriff und die Konstruktion der Split Bäume ein und kommen dann schließlich zu dieser Einbettung.  
+\end{Bemerkung}
+\textbf{\fontsize{14}{18}\selectfont Konstruktion von Split Bäumen}\\
+Sei $b \geq 2$ fest und $\mathcal{P} = (P_i)_{1 \leq i \leq b}$ ein zufälliger Wahrscheinlichkeitsvektor, also $P_i \geq 0$ und $\sum_{i=1}^{b}P_i = 1$. Sei $\mathcal{T}_b$ der unendliche Wurzelbaum, in dem jeder Knoten $b$ Kinder hat, beschriftet mit $1,...,b$ und gebe jedem Knoten $v \in \mathcal{T}_b$ eine unabhängige Kopie von $\mathcal{P}$, die mit $\mathcal{P}^{(v)}$ bezeichnet wird. Jeder Knoten $v \in T_b$ kann maximal einen Knoten enthalten und falls dieser einen enthält, so nennen wir den Knoten \textit{voll}. Anfangs sind die Knoten leer und Bälle, beginnend mit der Wurzel, befüllen die Knoten nach folgenden zwei Regeln.
+\begin{enumerate}
+    \item Ein Ball, der an einem leeren Knoten ankommt, bleibt dort. Dieser Knoten ist dann \textit{voll}.
+    \item Ein Ball, der an einem \textit{vollen} Knoten $v$ ankommt, bewegt sich weiter an die Kinder von $v$. Das Kind wird zufällig ausgewählt, wobei Kind $i$ mit Wahrscheinlichkeit $P_i^{(v)}$ ausgesucht wird.
+\end{enumerate}
+
+
+
+
+
+Mit dieser Vorarbeit, können wir nun die \textit{linear preferential attachment trees} in die Split Bäume einbetten.
+\begin{theorem}
+    Seien $(\chi,\rho)$ Parameter, welche die Voraussetzungen vom \textit{Chinese Restaurant Process} erfüllen und $\chi + \rho > 0$. Dann, falls die Bäume als ungeordnete Bäume betrachtet werden, hat der \textit{linear preferential attachment tree} $T_n^{\chi,\rho}$ für alle $n \in \mathbb{N}$ die selbe Verteilung wie der zufällige Split Baum $T^\mathcal{P}_n$ mit $b = \infty$ und 
+    \[ 
+    \mathcal{P} \sim GEM(\frac{\chi}{\chi + \rho}, \frac{\rho}{\chi + \rho})
+    \] 
+\begin{proof}
+    Die Hauptidee hinter der Beweis liegt darin, die Konstruktion der \textit{linear preferential attachment trees} in einer rekursiven Form aufzufassen und dann die Verteilung der 
+\end{proof}
+\end{theorem}
 
