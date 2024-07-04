@@ -17,6 +17,7 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
 \end{enumerate}
 \begin{theorem}
 \cite[Lemma 3.1]{janson2019random}
+\label{Gewichte Satz}
    Mit den linearen Gewichten $w_k = \chi k + p $, hat ein Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$.
 \end{theorem}
 \begin{proof}
@@ -39,5 +40,6 @@ Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{
         \item Falls der Knoten mit Beschriftung $i$ an die Wurzel angehängt wird, so fügen wir zur bestehenden Zyklus-Dekomposition, die Fixpunkt-Permutation $(i)$ hinzu.
         \item Falls der Knoten mit Beschriftung $i$ an ein anderen Knoten mit Beschriftung $j$, $j \neq 0$ angehängt wird, so fügen wir in den Zyklus $C$, welcher $j$ enthält, $i$ direkt nach $j$ hinzu. Bedeutet also, falls im ursprünglichen Zyklus $j \rightarrow k$ abgebildet wurde, im nächsten Schritt $j \rightarrow i \rightarrow k$ abgebildet wird.
     \end{enumerate}
-Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welche durch diese Konstruktion entsteht, bijektiv ist und somit können wir die Theorie die für 
+Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welche durch diese Konstruktion entsteht, bijektiv ist und somit können wir die Theorie der \textit{austauschbaren Partitionen} anwenden, insbesondere also Satz \ref{Main theorem CRP}. Dafür betrachten wir die bedingten Wahrscheinlichkeiten, dass der $n+1$-Knoten an principal Subtree $i$ angefügt wird, gegeben er enthält bereits $n_i$ Knoten. Nach \ref{Gewichte Satz}, hat dieser Teilbaum Gesamtgewicht $n_i(\chi + \rho) - \chi = n_i - \chi$ und der gesamte Baum Gewicht $m-\chi$. Die bedingten Wahrscheinlichkeiten entsprechen also denen in der Konstruktion von einem $(\chi,\rho)$ \textit{Chinese Restaurant Process} und die Aussage folgt direkt aus \ref{Main theorem CRP}.
 \end{proof}
+

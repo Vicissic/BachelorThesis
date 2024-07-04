@@ -63,13 +63,14 @@ Weiter sind die $P_i$ in 2. fast sicher eindeutig und gleich der fast sicheren a
     &=... =  \mathbb{E}\left[\prod_{i=1}^{k}P_i^{n_i-1}\prod_{i=1}^{k-1}(1-\sum_{j=1}^{i}P_j)\right].
 \end{align*}
 \end{proof}
-Mithilfe einer anderen Konstruktion von austauschbaren $\mathbb{N}$ \cite[Konstruktion 16]{pitman1995exchangeable}, stellt sich heraus, dass die $P_i$ in Form von einer \textit{Residual allocation Model (RAM)} sich darstellen lassen. Das bedeutet, dass unabhängige Zufallsvariablen $W_i, i \geq 1, W_i \in [0,1]$ existieren, sodass die $P_i$ aus Satz \ref{pitman} durch $W_i$
+Mithilfe einer anderen Konstruktion von austauschbaren $\mathbb{N}$ \cite[Konstruktion 16]{pitman1995exchangeable}, stellt sich heraus, dass die $P_i$ in Form von einer \textit{Residual allocation Model (RAM)} sich darstellen lassen. Das bedeutet, dass unabhängige Zufallsvariablen $W_i, i \geq 1, W_i \in [0,1]$ existieren, sodass die $P_i$ aus Satz \ref{pitman} als Produkt von den $W_i$
 \begin{equation}
     \label{RAM probability}
     P_i = W_i\prod_{j=1}^{i-1} (1-W_j)
 \end{equation}
 darstellen lassen. Korollar \ref{korollar pitman} ändert sich somit zu
 \begin{Korollar}
+    \label{second korollar Pitman}
     Die PEPF $p$ von Satz \ref{pitman} hat Form
     \[
     p(n_1,n_2,...,n_k) = \mathbb{E}\left[\prod_{i=1}^{k}W_i^{n_i-1}(1-W_i)^{\sum_{j=i+1}^{k}n_j}\right].
@@ -97,27 +98,82 @@ darstellen lassen. Korollar \ref{korollar pitman} ändert sich somit zu
    \end{align*}  
 
 \end{proof}
-
-Nachdem $n$ Gäste $k$ Tische besetzt haben, besetzt ein neuer Kunde einen Tisch nach folgenden Regeln:
+Wir nutzen die bis jetzt entwickelte Theorie der austauschbaren Partitionen um eine Klasse von \textit{Chinese Restaurant Process} zu betrachten, welche für spätere Baumanalyse von Relevanz wird. Dafür ersetzen wir die zweite Regel in der Konstruktion vom verallgemeinerten \textit{Chinese Restaurant Process} mit genauen Wahrscheinlichkeiten. Für Parameter $\alpha$ und $\theta$ halten wir fest:
+\begin{itemize} 
+    \item Falls zum Zeitpunkt des Eintritts des i-ten Kundes $k$ Tische mit jeweils $(n_1,...,n_k)$ Kunden besetzt sind, so setzt sich dieser mit Wahrscheinlichkeit $\frac{n_j-\alpha}{n + \theta}$ an Tisch $j \in \{1...k\}$ und mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$ an einen neuen Tisch $k+1$.
+\end{itemize}
+Damit die Wahrscheinlichkeitsregeln bei dieser Konstruktion erhalten bleiben, müssen $\alpha$ und $\theta$ entsprechend gewählt werden, dafür gibt es 2 Fälle \textcolor{red}{add proof of this}: 
 \begin{enumerate}
-    \item Der Gast besetzt ein Tisch $1 \leq i \leq k$ mit Wahrscheinlichkeit $\frac{n_i-\alpha}{n + \theta}$ 
-    \item Der Gast besetzt einen neuen Tisch $k+1$ mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$.
+    \item $ 0 \leq \alpha < 1$ und $\theta > - \alpha $ 
+    \item $\alpha < 0$ und $\theta = -m \alpha$ für ein $m \in \mathbb{N}$
 \end{enumerate}
-Damit diese tatsächlichen Wahrscheinlichkeiten entsprechen, müssen $\alpha$ und $\theta$ folgende Wahrscheinlichkeitsregeln erfüllen. \\
+
 Das Haupttheorem ist nun folgendes.
 \begin{theorem}
+    \label{Main theorem CRP}
     Für jede der Parameter $(\alpha,\theta)$, welche die oben genannten Voraussetzungen erfüllen, generiert das CRP eine austauschbare  Partition von $\mathbb{N}$. Die dazu gehörende EPPF (siehe Def. 3) ist 
     \begin{equation}
-   p_{\alpha,\theta}(n_1,...,n_k) = \frac{\displaystyle \prod_{i=0}^{k-2}(\theta + \alpha + i\alpha)\prod_{j=1}^{k}\prod_{r=1}^{n_i-1}(r-\alpha)}{\displaystyle\prod_{i=1}^{n-1}(\theta  + i)}.
+   p_{\alpha,\theta}(n_1,...,n_k) = \frac{\displaystyle \prod_{i=0}^{k-2}(\theta + \alpha + i\alpha)\prod_{j=1}^{k}\prod_{r=1}^{n_j-1}(r-\alpha)}{\displaystyle\prod_{i=1}^{n-1}(\theta  + i)}.
     \end{equation}
-    Die zugehörigen asymptotischen Frequenzen, in \textcolor{red}{size biased order of least elements} kann folgendermaßen repräsentiert werden.
+    Die zugehörigen asymptotischen Frequenzen, in \textit{Reihenfolge ihres Erscheinens}, können folgendermaßen repräsentiert werden.
     \[
-    (\tilde{P_1},\tilde{P_2},\tilde{P_3}...) = (W_1,\bar{W_1}W_2,\bar{W_1}\bar{W_2}W_3...).
+    (P_1,P_2,P_3...) = (W_1,\bar{W_1}W_2,\bar{W_1}\bar{W_2}W_3...).
     \]
     Wobei $W_i$ unabhängig voneinander, nach $\beta(1 - \alpha, \theta + i\alpha)$ verteilt sind und $\bar{W_i}:= 1 - W_i$.
-\end{theorem}  
+\end{theorem} 
+Bevor wir zum Beweis kommen, definieren wir die $\beta$-Verteilung und nennen Eigenschaften.
+\begin{Definition}
+    Eine Zufallsvariable $X$ ist $\beta(a,b),$ mit $ a,b > 0 $ verteilt, falls $X$ die Wahrscheinlichkeitsdichte 
+    \[
+        f(x) =
+        \begin{cases}
+        \frac{1}{B(a,b)} x^{a-1}(1-x)^{b}, \hspace{5pt} &x \in [0,1]  \\
+        0 &\textnormal{sonst},
+        \end{cases} 
+   \]
+mit 
+\[
+    B(a,b):= \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}
+\]
+besitzt. Hier bezeichnet $\Gamma$ die Gamma Funktion, $\Gamma(z)= \int_{0}^{\infty} t^{z-1}e^{-t}dt$.
+\end{Definition}
+Aus Korollar \ref{second korollar Pitman} werden oft nur die Momente von $W_i$ zur Verfügung stehen, woraus die Verteilung abgeleitet werden soll. Für Zufallsvariablen mit beschränkten Träger ist die Verteilung durch die Momente festgelegt, \cite[Theorem 30.1]{billingsley1995probability}, insbesondere auch für die $\beta$-Verteilung.
+\begin{lemma}
+    Für $X \sim \beta(a,b)$, gilt
+    \[
+    \mathbb{E}[X^k] = \prod_{r=0}^{k-1}\frac{a+r}{a+b  + r}.
+    \]
+\end{lemma}
 \begin{proof}
-   Wir beginnen mit der Austauschbarkeit. Dafür prüfen wir zuerst, dass $p_{\alpha,\theta}$ tatsächlich unserer EPPF entspricht. Wir nutzen Lemma \ref{Austauschbar Lemma} und beachten, dass $p(1) = 1$. Weiter sind die Übergangswahrscheinlichkeiten von $p_{\alpha,\theta}$ genau die Übergangswahrscheinlichkeiten von $N_m$ aus dem Lemma. Nach Definition \ref{Austauschbarkeit} ist die \textit{PEPF} $p$ symmetrisch, also ist die Konstruktion austauschbar.
+    Die Momente werden über die Berechnung der momenterzeugenden Funktion von $X$ in \cite[Kapitel 25]{johnson1995continuous} bewiesen. 
 \end{proof}
 
+Insbesondere folgt für die Parameter aus Satz \ref{Main theorem CRP}: 
+\begin{Korollar}
+    \label{Korollar Momente beta}
+    Für $X \sim \beta(1-\alpha,\theta + i\alpha)$, gilt:
+    \[
+    \mathbb{E}[X^k] = \prod_{r=1}^{k}\frac{r-\alpha}{r+\theta +(i-1)\alpha }.
+    \]
+\end{Korollar}
+Mit diesem Hilfsmittel können wir nun den Satz beweisen.
+\begin{proof}[Beweis von Satz \ref{Main theorem CRP}]
+   Wir beginnen mit der Austauschbarkeit. Dafür prüfen wir zuerst, dass $p_{\alpha,\theta}$ tatsächlich unserer EPPF entspricht. Wir nutzen Lemma \ref{Austauschbar Lemma} und beachten, dass $p(1) = 1$. Weiter sind die Übergangswahrscheinlichkeiten von $p_{\alpha,\theta}$ genau die Übergangswahrscheinlichkeiten von $N_m$ aus dem Lemma. Nach Definition \ref{Austauschbarkeit} ist die \textit{PEPF} $p$ symmetrisch, also ist die Konstruktion austauschbar. Für die asymptotischen Frequenzen nutzen wir Lemma \ref{second korollar Pitman} und verfahren Induktiv um die $W_i$ zu bestimmen. Wir beachten, dass die Momente von $W_i$ eindeutig die $W_i$ charakterisieren, da Sie nach Voraussetzung beschränkten Träger in $[0,1]$ haben. Für $W_1$ sind die Momente nun:
+    \begin{align*}
+    p(i)= \mathbb{E}[W_1^{i-1}] &= \frac{\prod_{j=1}^{i-1}(j-\alpha)}{\prod_{j=1}^{i-1}(\theta+j)}\\
+    &= \prod_{j=1}^{i-1}\frac{(j-\alpha)}{(\theta+j)}
+    \end{align*}
+und somit $W_1 \sim \beta(1-\alpha,\theta + \alpha)$ nach Korollar \ref{Korollar Momente beta}. Wir machen eine Induktion über $W_i$ und nehmen an, dass $W_n \sim \beta(1-\alpha,\theta+n\alpha)$. Für $W_{n+1}$ rechnen wir
+    \begin{align*}
+    \frac{p(\overbrace{1,..,1}^{n},i+1)}{p(\underbrace{1,..,1}_{n-1},i+2)}= \frac{\mathbb{E}[(1-W_n)^{i+1}]}{\mathbb{E}[(W_n)^{i+1}]}\mathbb{E}[W_{n+1}^i] \\
+    \Rightarrow \frac{\theta + n\alpha}{i+1-\alpha}=  \prod_{r=0}^{i}\frac{\theta + n\alpha + r}{{1-\alpha + r}}\mathbb{E}[W_{n+1}^i]\\
+    \Rightarrow \frac{\theta + n\alpha}{i+1-\alpha}\prod_{r=1}^{i+1}\frac{{r-\alpha }}{ r -1 + \theta + n\alpha }=  \mathbb{E}[W_{n+1}^i]\\
+    \Rightarrow \prod_{r=2}^{i+1}\frac{1}{r -1 + \theta + n\alpha}\prod_{r=1}^{i}r-\alpha =  \mathbb{E}[W_{n+1}^i]\\
+    \Rightarrow \prod_{r=1}^{i}\frac{r-\alpha}{r+\theta+n\alpha} = \mathbb{E}[W_{n+1}^i].
+    \end{align*}
+Die Aussage folgt.
+\end{proof}
+\begin{Definition}
+Die Verteilung der $(P_1,P_2...)$ aus Satz \ref{Main theorem CRP} wird nach Griffith-Engen-McCloskey für Parameter $\alpha,\theta$ die $GEM(\alpha,\theta)$-Verteilung genannt.
+\end{Definition}
 \end{section}
