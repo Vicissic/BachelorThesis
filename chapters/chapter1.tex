@@ -62,10 +62,12 @@ Der zufällige Split Baum $T_n = T_n^{\mathcal{P}}$ ist nun der Baum der entsteh
 
 Mit dieser Vorarbeit können wir nun die \textit{linear preferential attachment trees} in die Split Bäume einbetten, indem wir auch Split Bäume mit $b = \infty$ zulassen.
 \begin{theorem}
+    \label{main theorem paper}
     Seien $(\chi,\rho)$ Parameter, welche die Voraussetzungen vom \textit{Chinese Restaurant Process} erfüllen und $\chi + \rho > 0$. Dann, falls die Bäume als ungeordnete Bäume betrachtet werden, hat der \textit{linear preferential attachment tree} $T_n^{\chi,\rho}$ für alle $n \in \mathbb{N}$ die selbe Verteilung wie der zufällige Split Baum $T^\mathcal{P}_n$ mit $b = \infty$ und 
     \[ 
     \mathcal{P} \sim PD(\frac{\chi}{\chi + \rho}, \frac{\rho}{\chi + \rho})
     \] 
+\end{theorem}
 \begin{proof}
     Die Hauptidee hinter der Beweis liegt darin, die Konstruktion der \textit{linear preferential attachment trees} in einer rekursiven Form aufzufassen und dann die Verteilung vom \textit{Split Vektor} $\mathcal{P}$ mithilfe von Satz \ref{Main theorem CRP} zu bestimmen.\\
     Nach Konstruktion der \textit{linear preferential attachment trees} wird ein neuer Knoten an einen bestehenden Knoten $u$ proportional zum Gewicht vom Knoten $w_{d(u)}$ angehängt. Die Wahrscheinlichkeit, dass ein Knoten an eine bestehende Gruppe von Knoten angehängt wird, ist daher proportional zur Summe der Gewichte dieser Gruppe. Dies erlaubt uns den Aufbau vom Baum rekursiv zu beschreiben. Dafür formulieren wir die Konstruktion vom \textit{linear preferential attachment tree} nach folgenden Regeln um.
@@ -84,8 +86,21 @@ Mit dieser Vorarbeit können wir nun die \textit{linear preferential attachment 
 
 \end{proof}
 \begin{Bemerkung}
-    
+    In dieser Abwandlung der Konstruktion vom Split Baum kann der \textit{Split Vektor} beliebig permutiert werden, da die Knoten in Reihenfolge ihres Erscheinens neu benannt wurden. Das bedeutet, dass der Satz für jede Permutation von einer $PD(\chi,\rho)$ Verteilung auch gilt, insbesondere also auch für die $GEM(\chi,\rho)$ Verteilung (Siehe Definition \ref{GEM und PD Verteilungen}).
 \end{Bemerkung}
+In Devroyes Publikation \cite{devroye1998universal} spielt die Größen-verzerrte Version von $\mathcal{P}$ eine wichtige Rolle. Die Verteilung ist durch folgendes Sampling festgelegt.
+\begin{enumerate}
+    \item Gegeben $\mathcal{P} = (P_i)_{i \in \mathbb{N}}$, sei $I$ eine Zufallsvariable welche durch Verteilung $P(I=i) = P_i, \forall i \in \mathbb{N}$ definiert ist.
+    \item $W:= P_I$ 
+\end{enumerate}
+oder in einer anderen Schreibweise
+\[
+    P(W = P_i| (P_i)_{i \in \mathbb{N}}) = P_i.
+\]
+In unserem Fall ist die explizite Berechnung der Verteilung von $W$ recht einfach.
+\begin{theorem}
+    Für den zufälligen Split Baum aus Satz \ref{main theorem paper}, ist $W \sim \beta(\rho,1)$
+\end{theorem} 
+\begin{proof}
 
-\end{theorem}
-
+\end{proof}
