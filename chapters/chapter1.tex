@@ -23,9 +23,12 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
 \begin{proof}
     Seien $d_1...d_m$ die Ausgangsgrade der jeweiligen Knoten im Baum. Dann ist die Summe der Ausgangsgrade, $\sum_{i=1}^{m}d_i = m-1$ und somit:
     \[
-     w(T) = \sum_{i=1}^{m}w_i = \sum_{i=1}^{m} (\chi d_i + \rho) = m \rho + \chi \sum_{i = 1}^{m} d_i = m(\chi + \rho) - \chi  
+     w(T) = \sum_{i=1}^{m}w_i = \sum_{i=1}^{m} (\chi d_i + \rho) = m \rho + \chi \sum_{i = 1}^{m} d_i = m(\chi + \rho) - \chi.
     \]
 \end{proof}
+\begin{Definition}
+    Falls $T$ ein verwurzelter Baum ist, und $v$ ein Knoten in $T$, so bezeichnen wir mit $T^v$ den Teilbaum von $T$ mit Wurzel $v$. Ein \textit{principal Subtree} $T^v$ von $T$ ist ein Teilbaum wo $v$ ein Kind von der Wurzel von $T$ ist.
+\end{Definition}
 \begin{theorem} \cite[Theorem 3.2]{janson2019random}
     \label{linpreft Grenzwert}
     Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty = $ eine Folge von \linpreft, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet. Sei $N_j(n) := |T^j_n|$, die Größe des j-ten \PsubT von $T_n$. Dann gilt 
@@ -47,24 +50,42 @@ Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welch
     Satz \ref{linpreft Grenzwert} wird eine zentrale Rolle bei der Bestimmung des \textit{Split Vektors} in der Einbettung von \textit{linear preferential attachment trees} in Devroyes Split Bäume spielen. Wir führen zuerst den Begriff und die Konstruktion der Split Bäume ein und kommen dann schließlich zu dieser Einbettung.  
 \end{Bemerkung}
 \textbf{\fontsize{14}{18}\selectfont Konstruktion von Split Bäumen}\\
-Sei $b \geq 2$ fest und $\mathcal{P} = (P_i)_{1 \leq i \leq b}$ ein zufälliger Wahrscheinlichkeitsvektor, also $P_i \geq 0$ und $\sum_{i=1}^{b}P_i = 1$. Sei $\mathcal{T}_b$ der unendliche Wurzelbaum, in dem jeder Knoten $b$ Kinder hat, beschriftet mit $1,...,b$ und gebe jedem Knoten $v \in \mathcal{T}_b$ eine unabhängige Kopie von $\mathcal{P}$, die mit $\mathcal{P}^{(v)}$ bezeichnet wird. Jeder Knoten $v \in T_b$ kann maximal einen Knoten enthalten und falls dieser einen enthält, so nennen wir den Knoten \textit{voll}. Anfangs sind die Knoten leer und Bälle, beginnend mit der Wurzel, befüllen die Knoten nach folgenden zwei Regeln.
+Sei $b \geq 2$ fest und $\mathcal{P} = (P_i)_{1 \leq i \leq b}$ ein zufälliger Wahrscheinlichkeitsvektor, also $P_i \geq 0$ und $\sum_{i=1}^{b}P_i = 1$. Sei $\mathcal{T}_b$ der unendliche Wurzelbaum, in dem jeder Knoten $b$ Kinder hat, beschriftet mit $1,...,b$. Wir geben jedem Knoten $v \in \mathcal{T}_b$ eine unabhängige Kopie von $\mathcal{P}$, die mit $\mathcal{P}^{(v)}$ bezeichnet wird. Jeder Knoten $v \in T_b$ kann maximal einen Knoten enthalten und falls dieser einen enthält, so nennen wir den Knoten \textit{voll}. Anfangs sind die Knoten leer und Bälle, beginnend mit der Wurzel, befüllen die Knoten nach folgenden zwei Regeln.
 \begin{enumerate}
     \item Ein Ball, der an einem leeren Knoten ankommt, bleibt dort. Dieser Knoten ist dann \textit{voll}.
     \item Ein Ball, der an einem \textit{vollen} Knoten $v$ ankommt, bewegt sich weiter an die Kinder von $v$. Das Kind wird zufällig ausgewählt, wobei Kind $i$ mit Wahrscheinlichkeit $P_i^{(v)}$ ausgesucht wird.
 \end{enumerate}
+Der zufällige Split Baum $T_n = T_n^{\mathcal{P}}$ ist nun der Baum der entsteht, wenn nur die Knoten betrachtet werden, welche die ersten $n$ Bälle enthalten.
+\begin{Bemerkung}
+    Die hier vorgeführte Konstruktion ist nur eine Teilmenge von der allgemeineren Struktur von Devroyes Split Bäumen. In der Notation von Devroye \cite{devroye1998universal}, ist diese Teilmenge durch die Parameter $(s_0,s_1,s) = (1,0,1)$ festgelegt. Im weiteren Verlauf ist bei Bezugnahmen auf Split-Bäume stets dieser Spezialfall gemeint.
+\end{Bemerkung}
 
-
-
-
-
-Mit dieser Vorarbeit, können wir nun die \textit{linear preferential attachment trees} in die Split Bäume einbetten.
+Mit dieser Vorarbeit können wir nun die \textit{linear preferential attachment trees} in die Split Bäume einbetten, indem wir auch Split Bäume mit $b = \infty$ zulassen.
 \begin{theorem}
     Seien $(\chi,\rho)$ Parameter, welche die Voraussetzungen vom \textit{Chinese Restaurant Process} erfüllen und $\chi + \rho > 0$. Dann, falls die Bäume als ungeordnete Bäume betrachtet werden, hat der \textit{linear preferential attachment tree} $T_n^{\chi,\rho}$ für alle $n \in \mathbb{N}$ die selbe Verteilung wie der zufällige Split Baum $T^\mathcal{P}_n$ mit $b = \infty$ und 
     \[ 
-    \mathcal{P} \sim GEM(\frac{\chi}{\chi + \rho}, \frac{\rho}{\chi + \rho})
+    \mathcal{P} \sim PD(\frac{\chi}{\chi + \rho}, \frac{\rho}{\chi + \rho})
     \] 
 \begin{proof}
-    Die Hauptidee hinter der Beweis liegt darin, die Konstruktion der \textit{linear preferential attachment trees} in einer rekursiven Form aufzufassen und dann die Verteilung der 
+    Die Hauptidee hinter der Beweis liegt darin, die Konstruktion der \textit{linear preferential attachment trees} in einer rekursiven Form aufzufassen und dann die Verteilung vom \textit{Split Vektor} $\mathcal{P}$ mithilfe von Satz \ref{Main theorem CRP} zu bestimmen.\\
+    Nach Konstruktion der \textit{linear preferential attachment trees} wird ein neuer Knoten an einen bestehenden Knoten $u$ proportional zum Gewicht vom Knoten $w_{d(u)}$ angehängt. Die Wahrscheinlichkeit, dass ein Knoten an eine bestehende Gruppe von Knoten angehängt wird, ist daher proportional zur Summe der Gewichte dieser Gruppe. Dies erlaubt uns den Aufbau vom Baum rekursiv zu beschreiben. Dafür formulieren wir die Konstruktion vom \textit{linear preferential attachment tree} nach folgenden Regeln um.
+    \begin{enumerate}
+        \item Ein Ball, der an einem leeren Knoten ankommt, bleibt dort. Dieser Knoten ist dann \textit{voll}.
+        \item Ein Ball, der an einem \textit{vollen} Knoten $v$ ankommt, bewegt sich weiter an die Kinder von $v$. Falls Knoten $v$ $d$ Kinder $v_1,v_2...v_d$ hat, so bewegt sich dieser an Kind $i$ mit Wahrscheinlichkeit $w(T^{v_i})/w(T^{v})$ für alle $i \in \{1...d\}$ und an ein neues Kind $d+1$ mit Wahrscheinlichkeit $(\chi d + \rho)/w(T^{v})$.
+    \end{enumerate} 
+    Wir beschriften die Bälle nach der Reihenfolge ihres Erscheinens beginnend mit der Wurzel als $0$ (d.h. der $i+1$-te Ball der zum Baum hinzugefügt wird, hat Beschriftung $i$). Seien weiter die Anzahl der Bälle im $j$-ten \textit{principal Subtree} von $T_n$ mit $n_j$ bezeichnet.
+    Nach Satz \ref{Gewichte Satz} können wir die Wahrscheinlichkeiten von der zweiten Regel berechnen.
+    \begin{align}
+         \frac{w(T^{v_i})}{w(T^{v})} &= \frac{n_i(\chi + \rho) - \chi}{n(\chi+ \rho) - \chi} = \frac{n_i - \chi}{ n + \rho} \label{Gewicht 1}\\  
+         \frac{\chi d + \rho}{w(T^{v})} &= \frac{\chi d + \rho}{ n + \rho} \label{Gewicht 2}.
+    \end{align}
+    Wobei hier, Analog zu Satz \ref{linpreft Grenzwert}, $\chi + \rho = 1$ angenommen wurde.  Falls man die \textit{Principal Subtrees} nun mit Tischen identifiziert, so sieht man direkt anhand \ref{Gewicht 1} und \ref{Gewicht 2}, dass diese 2 Regeln von der Wurzel aus gesehen einen $(\chi,\rho)$-\textit{Chinese Restaurant Process} widerspiegeln.\\
+    Andererseits, besagt Satz \ref{Kingmans representation}, dass jede austauschbare zufällige Partition die gleiche Verteilung hat, wie ein $(P^{\downarrow}_i)_{i \in \mathbb{N}}$-\textit{Paintbox Prozess}, wobei $P^{\downarrow}_i$ der P-f.s. Grenzwert von der normierten $i$-ten Blockgröße von der Partition ist. Da in unserem Fall die Blockgrößen die Größen der \textit{principal subtrees} sind, können auch Split-Bäume mithilfe der Theorie der austauschbaren Partionen dargestellt werden. Dafür betrachten wir die Verteilung der Bälle in die \textit{principal Subtrees} nachdem die Wurzel mit einem Ball besetzt ist. Diese Verteilung ist Äquivalent zu einem $\mathcal{P}^{v} = (P_i^{\downarrow})_{i \in \mathbb{N}}$-Paintbox Prozess, falls man die Kinder der Knoten in einen Split Baum nach Reihenfolge ihres Erscheinens umbenennt. Nach Definition \ref{GEM und PD Verteilungen} und Satz \ref{Main theorem CRP} ist $(P^{\downarrow}_i)_{i \in \mathbb{N}} \sim PD(\chi,\rho)$ und die Behauptung ist gezeigt. 
+
 \end{proof}
+\begin{Bemerkung}
+    
+\end{Bemerkung}
+
 \end{theorem}
 
