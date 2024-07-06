@@ -1,0 +1,109 @@
+\chapter{Anwendungen}
+% LTeX: language=de-DE
+\begin{Definition}
+    \label{definition height trees}
+    Für einen gewurzelten Baum $T$, sei $h(v)$ die Tiefe eines Knotens $v$ und sei $v\wedge w$ der letzte gemeinsame Vorfahren von $v$ und $w$. Dann definieren wir die Funktion $Y$ als:
+    \[
+        Y := Y(T) = \sum_{v \neq w}h(v \wedge w),
+    \]
+    wobei wir die Summe über geordnete Paare $(v,w)$ definieren. Die Summe über geordnete Paare ist durch Symmetrie von $v \wedge w$ gleich der Hälfte der Summe über ungeordnete Paare. 
+\end{Definition}
+\begin{theorem}\textnormal{Hoeffdings Gesetz großer Zahlen für U-Statistiken}\\
+    \label{hoeffding theorem}
+    Seien $X_i$ i.i.d Zufallsvariablen, $f(X_1,...X_r)$ eine Funktion mit Erwartungswert $\theta$ und sei $\tilde{f}_n$ definiert durch 
+    \[
+        \frac{1}{(n)_{k}}\sum_{\substack{i_1,...,i_k \in \{1...n\}\\ \textnormal{paarweise verschieden}}}f(X_{i_1},...,X_{i_k}),
+    \]
+    wobei $(n)_k := \prod_{i=0}^{k-1}(n-i)$.
+    Dann konvergiert 
+    \[
+        \tilde{f}_n  \rightarrow \theta \hspace{5pt} \textnormal{P-f.s.} \hspace{5pt} \textnormal{für } n \rightarrow \infty.
+    \]
+\begin{proof}
+    Das Gesetz wird in \cite{hoeffding1961strong} bewiesen.
+\end{proof}
+\end{theorem}
+\begin{theorem}
+    Sei $(T_n^\mathcal{P})$ ein zufälliger Split Baum für einen \textit{Split Vektor} $\mathcal{P} = (P_i)_{i \in \mathbb{N}}$ und sei $Y_n := Y(T^\mathcal{P}_n)$ definiert wie in \ref{definition height trees}. Wir nehmen an, dass für ein $i \in \mathbb{N}$, $0< P_i < 1$ mit positiver Wahrscheinlichkeit. Dann existiert eine Zufallsvariable $Q$, sodass $Y_n/n^2 \rightarrow Q$ P-f.s. für $n \to \infty$. Weiter gilt 
+    \begin{equation}
+        \label{first equation of Q theorem}
+    \mathbb{E}[Q]  = \frac{1}{1-\mathbb{E}[\sum_{i \geq 1}P_i ]}-1 < \infty. 
+    \end{equation} 
+    Zusätzlich erfüllt $Q$ die Verteilungs-Fixpunktgleichung (Distributional Fixed point equation)
+    \begin{equation}
+        Q \stackrel{\mathcal{L}}{=} \sum_{i=1}^{\infty}P_i^2(1+Q^{(i)}),
+    \end{equation} 
+    wobei die $Q^{(i)}$ unabhängig voneinander und von $(P_i)_{i \in \mathbb{N}}$ sind, und $Q^{(i)} \stackrel{\mathcal{L}}{=}Q$. 
+    Weiter gilt, mit $W$ so definiert wie nach Bemerkung \ref{Bemerkung PD Verteilungen}, dass 
+\begin{equation}
+    \mathbb{E}[Q] = \frac{\mathbb{E}[W]}{1 - \mathbb{E}[W]}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+  Wir beginnen mit einer Approximation von $Y_n$ für Split Bäume. Dafür modifizieren wir die Konstruktion von Split Bäumen und nehmen an, dass Anfangs bereits jeder Knoten \textit{voll} ist. Bedeutet, dass bereits der erste Knoten nicht an der Wurzel hängen bleibt, sondern sich anhand der jeweiligen \textit{Split Vektoren} der Knoten unendlich Tief entlang des Baums bewegt. Wir notieren den Pfad vom k-ten Ball, der sich so entlang des Baumes bewegt mit $\textbf{X}_k = (X_{k,i})_{i \in \mathbb{N}}$, wobei $X_{k,i} \in \mathbb{N}$ die Knotenbeschriftung vom Pfad in der  Tiefe $i$ bezeichnet. Gegeben \textit{Split Vektoren} $\mathcal{P}^{v}$ von allen Knoten $v$, sind die $\textbf{X}_i$ i.i.d. durch die Verteilung 
+  \begin{equation}
+    \label{independency sequence depth}
+    \mathbb{P}(\bigcap_{j = 1}^{m}X_{k,j} = i_j) = \prod_{j=1}^{m}P_{i_j}^{(i_1...i_{j-1})}
+  \end{equation}
+  festgelegt, wobei wir mit $(i_1...i_{j-1})$ den Knoten in der $(j-1)$-ten Tiefe vom Pfad identifizieren. Sei nun für 2 Sequenzen $\textbf{X}^1,\textbf{X}^2 \in \mathbb{N}^{\infty}$ die Funktion $f$ folgendermaßen definiert:
+  \[
+    f(\textbf{X}^1,\textbf{X}^2) = min(\{i: \textbf{X}^1_i \neq \textbf{X}^2_i\}) - 1,
+  \]
+  also die Länge der längsten gemeinsamen Anfangssequenz. Dann ist 
+  \[
+    f(\textbf{X}^k,\textbf{X}^l) = h(v_k,v_l),
+  \]
+  falls beide gegenseitig kein Vorfahren vom anderen sind und $\textbf{X}^k$ bzw. $\textbf{X}^l$ die zugehörende Sequenz vom Knoten $v_k$ bzw. $v_l$ ist. In dem Falle das $v_l$ ein Vorfahren von $v_k$ ist, gilt 
+  \begin{equation}
+    \label{inequality for height}
+    f(\textbf{X}^k,\textbf{X}^l) \geq h(v_k,v_l)
+  \end{equation}. \\
+  Mithilfe dieser Definition definieren wir nun unsere Approximation durch 
+  \[
+    \tilde{Y}_n = 2\sum_{l < k \leq n}f(\textbf{X}^k,\textbf{X}^l).
+  \]
+Bedingt auf alle \textit{Split Vektoren} $\mathcal{P}^{v}$, bekommen wir mit $\chi$ definiert als Indikator Funktion.
+\begin{align}
+\mathbb{E}[f(\textbf{X}^1,\textbf{X}^2)|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}] &= \mathbb{E}[\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\chi\{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}] \nonumber\\
+&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\mathbb{E}[\chi\{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}] \nonumber\\
+&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{1,j} = i_j )\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{2,j} = i_j ) \nonumber\\
+&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}(\prod_{j=1}^{m}P_{i_j}^{(i_1...i_{j-1})})^2 =: Q.
+\end{align}
+Mit der Turmeigenschaft zusammen mit der Voraussetzung, dass die $P^{(v)}$ i.i.d sind, folgt 
+\begin{align}
+\mathbb{E}[f(\textbf{X}^1,\textbf{X}^2) ] = \mathbb{E}[Q] &=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\prod_{j=1}^{m}\mathbb{E}[P_{i_j}^{2}] \nonumber\\
+ &= \sum_{m=1}^{\infty}(\sum_{i =1}^{\infty}\mathbb{E}[P_{i}^{2}])^m \nonumber \\
+ &= \frac{1}{1- \sum_{i=1}^{\infty}\mathbb{E}[P_i^2]}-1 \nonumber.
+\end{align}
+Wobei wir in die letzte Gleichung die Summenformel für eine geometrische Reihe ausgenutzt haben, da $\sum_{i=1}^{\infty} P_i^2 \leq \sum_{i=1}^{\infty} P_i = 1$ mit positiver Wahrscheinlichkeit $\sum_{i=1}^{\infty} \mathbb{E}[P_i^2] < 1$ impliziert. Die zweite Behauptung des Satzes (\ref{first equation of Q theorem}) ist somit gezeigt.
+Nach Hoeffdings Gesetz der großen Zahlen \ref{hoeffding theorem}, gilt
+\[
+    \frac{\tilde{Y}_n}{n(n-1)} \rightarrow Q \hspace{5pt} \textnormal{P -f.s.} \hspace{5pt} \textnormal{für } n \to \infty.
+\]
+Es fehlt zu zeigen, dass $(\tilde{Y}_n-Y_n)/n^2 \rightarrow 0 $ P-f.s. für $n \to \infty$. \\
+Sei 
+\begin{equation}
+H_n := max\{h(v) : v \in T_n\}
+\end{equation}
+die Höhe von $T_n := T_n^\mathcal{P}$ und
+\begin{equation}
+H^*_n := max\{f(\textbf{X}_k,\textbf{X}_l) : l < k \leq n\}.
+\end{equation}
+Wir definieren $v \prec w$, falls $v$ ein Vorfahren von $w$ ist. Dann gilt durch \ref{inequality for height}
+\begin{align*}
+    0 \leq \tilde{Y}_n - Y_n &= 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}(f(\textbf{X}_k,\textbf{X}_l)-h(v_k \wedge v_l))\\
+    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}f(\textbf{X}_k,\textbf{X}_l) \\
+    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}H_n^* \\
+    &\leq 2\sum_{k=1}^{n}H_nH_n^*  = 2nH_nH_n^*\\
+\end{align*}
+wobei die letzte Ungleichung Wahr ist, da ein Knoten höchstens $H_n$ Vorfahren hat. \\
+Nun hat der tiefst-liegende Knoten $k$ die Tiefe $H_n$ und falls der Vaterknoten mit $l$ bezeichnet wird, so gilt 
+\[
+    H^*_n \geq f(\textbf{X}^k,\textbf{X}^l) \geq H_n - 1.
+\]
+Sei $m := m_n := \lceil c log(n) \rceil$. Dann gilt 
+\begin{align*}
+\mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m| \{\mathcal{P}^v, v \textnormal{ Knoten}\}) = \mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m| \{\mathcal{P}^v, v \textnormal{ Knoten}\}) \\
+\mathbb{P}(X)
+\end{align*}
+\end{proof}
