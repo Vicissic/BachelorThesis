@@ -1,5 +1,9 @@
-\begin{section}{Definitionen}
+\begin{section}{Motivation}
 % LTeX: language=de-DE
+Als vorläufige Motivation für die Relevanz der Theorie der austauschbaren und partiell austauschbaren Partitionen von $\mathbb{N}$ für die darauffolgende Baumanalyse, beschreiben wir kurz informell den Zusammenhang. Die Konstruktion von Bäumen die betrachtet werden, beinhalten sukzessives Hinzufügen von Knoten, welche mit natürlichen Zahlen identifiziert werden. Teilbäume, wo die Knoten/natürliche Zahlen im Baum angefügt werden, kann man sich deshalb als eine Art Partition vorstellen. Die Austauschbarkeit erlaubt uns eine De-Finetti-ähnlichen Aussage (Satz \ref{Main theorem CRP}) über die relative Größe von Partitionen und somit über die Größe von Teilbäumen zu formulieren. \\
+Wir beginnen mit den Definitionen. 
+\end{section}
+\begin{section}{Definitionen}
 \begin{Definition}
    Sei $F$ eine endliche Menge. Dann ist eine Partition von $F$ eine ungeordnete Sammlung von nichtleeren, disjunkten Untermengen $\{A_i| 1 \leq i \leq k, A_i \subseteq F\}$, mit $\cup_{i=1}^{k}A_k = F$.\\
    Eine Partition von einer natürlichen Zahl $n$, ist eine ungeordnete Menge von positiven natürlichen Zahlen mit Summe $n$.
@@ -7,7 +11,7 @@
 \begin{Definition}
     \textnormal{(Zufällige Partitionen)}
 \begin{enumerate}
-    \item Eine zufällige Partition von $n\in \mathbb{N}$ ist eine Zufallsvariable $\pi_n$ mit Werten in der endlichen Menge von allen Partitionen von $n$.
+    \item Eine zufällige Partition von $n\in \mathbb{N}$ ist eine Zufallsvariable $\sigma_n$ mit Werten in der endlichen Menge von allen Partitionen von $n$.
     \item Eine zufällige Partition von $[n] := \{1 ...n\}$, ist eine Zufallsvariable $\Pi_n$ mit Werten in $\mathcal{P}(n)$, der endlichen Menge von Partitionen von $[n]$.
     \item Eine zufällige Partition auf $\mathbb{N}$ ist eine Folge $\Pi = (\Pi_n)_{n\in \mathbb{N}}$ von Zufallsvariablen auf einem gemeinsamen Wahrscheinlichkeitsraum mit Werten in der endlichen Menge von Partitionen von $[n]$, sodass für $i<j, i,j \in \mathbb{N}$ die Restriktion von $\Pi_j$ auf $[i]$ $\Pi_i$ ist.
 \end{enumerate}
@@ -26,7 +30,11 @@
     \end{enumerate}
 \end{Definition}
 \begin{Bemerkung}
-    Das bei einer symmetrischen Funktion $p$, die zufällige Partition tatsächlich Austauschbar ist, folgt aus der Definition und der Diskussion in \cite[Seite 85]{aldous2006ecole}
+    Das bei einer symmetrischen Funktion $p$, die zufällige Partition tatsächlich Austauschbar ist, folgt aus der Definition und der Diskussion in \cite[Seite 85]{aldous2006ecole}: eine Partition heißt austauschbar, falls 
+    \[
+         \mathcal{L}(\Pi_n) = \mathcal{L}(\pi(\Pi_{n})),
+    \]
+    für jede Permutation $\pi$ von $\{1...n\}$ gilt. Hier wirkt $\pi$ auf Partitionen $(A_1,...A_k)$ von $n$ über $\pi(A_1,...,A_k) =(\pi(A_1),...,\pi(A_k)) $ und $\pi(A_i) = \{\pi(i) | i \in A_i\}$.
 \end{Bemerkung}
 \begin{Definition}{Konsistenz}\\
     Wir nennen eine Folge von austauschbaren zufälligen Partitionen $(\Pi_n)$ \textit{konsistent}, falls die Restriktion $\Pi_{m,n}$ von $\Pi_m$ zu $[n]$ für alle $m > n$ die gleiche Verteilung hat wie $\Pi_m$. Alle zufälligen Partitionen auf $\mathbb{N}$ sind konsistent.
@@ -62,32 +70,6 @@
     die Anzahl der Partitionen von $[n]$ mit Klassengrößen in Reihenfolge ihres Erscheinens durch $\textbf{n}$ gegeben (Siehe Bemerkung \ref{combinatorial argument}). Angenommen $S_n \neq 1$, dann gilt aber $S_n> 0$ und wir definieren $q(\textbf{n}) := \frac{p(\textbf{n})}{S_n}$. Dann ist $q(\textbf{n})$ aus Lemma \ref{lemma partielle austauschbarkeit} zusammen mit \ref{markov chain} eine \textit{PEPF}, also $q(1) = \frac{p(1)}{S_n} = 1 \Rightarrow S_n =1$, somit ist $p(\textbf{n})$ eine \textit{EPPF} und die Behauptung ist gezeigt. 
 \end{proof}
 \begin{Bemerkung}
-    \label{combinatorial argument}
-    Das $\#(\textbf{n})$ tatsächlich die Form \ref{combinatorial equation} hat, lässt sich durch Betrachtung von
-    \begin{align*}
-   \Omega_{\textbf{n}} = \{ \textbf{x}:= (x_{n_1}^{1},x_{n_1}^{2},...,x_{n_1}^{n_1},x_{n_2}^{1},x_{n_2}^{2},...,x_{n_k}^{n_k})|& \textbf{n}:= (n_1,...,n_k), \sum_{i=1}^{k}n_i=  n \\
-   &,\textbf{x} \in \mathcal{P}(n)\\
-   &, x_{n_i}^j < x_{n_i}^{j+1}\hspace{5pt} \forall  i \in \{1...k\} \forall j \in \{1...n_i-1\} \\
-   &, x^1_{n_i} < x^1_{n_i+1} \hspace{5pt} \forall i \in \{1...k\}\}
-    \end{align*} 
-    nachweisen. Es gilt
-    \[
-   \#(\textbf{n}) =  |\Omega_\textbf{n}|
-    \]
-    und wir berechnen nun $|\Omega_\textbf{n}|$. Es gibt $n!$ Möglichkeiten $[n]$ zu permutieren, nach den Bedingungen von $\Omega_n$ muss aber $x_{n_i}^1$ für alle $i$ kleiner sein als jede darauffolgende Zahl in der Liste. Formal beschrieben bedeutet das, falls $\textbf{x}_i, 1 \leq i \leq n$ die i-te Komponente von $\textbf{x}$ ist, so ist $\textbf{x}_{n_i} < \textbf{x}_{j}$ $\forall i \in \{n_i+1,...,n\}$. Sei  
-    \begin{align*}
-   \Omega^1_{\textbf{n}} = \{ \textbf{x}:= (x_{n_1}^{1},x_{n_1}^{2},...,x_{n_1}^{n_1},x_{n_2}^{1},x_{n_2}^{2},...,x_{n_k}^{n_k})|& \textbf{n}:= (n_1,...,n_k), \sum_{i=1}^{k}n_i=  n \\
-   &,\textbf{x} \in \mathcal{P}(n)\\
-   &, \textbf{x}_{n_i} < \textbf{x}_j \forall i \in \{1...k\},\forall j \in \{n_i+1,...,n\}\}
-    \end{align*} 
-    so ist
-    \[
-    |\Omega^1_{\textbf{n}}| = \frac{n!}{n(n-n_1)(n-n_2-n_1)...(n-\sum_{i=1}^{k-1}n_i)}.
-    \]
-    Um von $|\Omega_\textbf{n}^1|$ auf $|\Omega_\textbf{n}|$ zu kommen fehlt uns in jedem der einzelnen Komponenten $n_i$ die Permutationen der $n_i -1$ nachfolgenden Zahlen nach jedem der $\textbf{x}_{n_i}$ zu zählen. Da es aber $\prod_{i=1}^{k}(n_i-1)!$ davon gibt, gilt 
-    \[
-     |\Omega_\textbf{n}| = \frac{|\Omega_\textbf{n}^1|}{\prod_{i=1}^{k}(n_i-1)!}
-    \]
-    und die Behauptung ist gezeigt.
+    Das $\#(\textbf{n})$ tatsächlich die Form \ref{combinatorial equation} hat, wird im Anhang Lemma
 \end{Bemerkung}
 \end{section}

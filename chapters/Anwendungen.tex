@@ -24,6 +24,7 @@
 \end{proof}
 \end{theorem}
 \begin{theorem}
+    \label{big Q theorem}
     Sei $(T_n^\mathcal{P})$ ein zufälliger Split Baum für einen \textit{Split Vektor} $\mathcal{P} = (P_i)_{i \in \mathbb{N}}$ und sei $Y_n := Y(T^\mathcal{P}_n)$ definiert wie in \ref{definition height trees}. Wir nehmen an, dass für ein $i \in \mathbb{N}$, $0< P_i < 1$ mit positiver Wahrscheinlichkeit. Dann existiert eine Zufallsvariable $Q$, sodass $Y_n/n^2 \rightarrow Q$ P-f.s. für $n \to \infty$. Weiter gilt 
     \begin{equation}
         \label{first equation of Q theorem}
@@ -86,7 +87,7 @@ Wobei wir in die letzte Gleichung die Summenformel für eine geometrische Reihe 
 und folgern
 \begin{align}
 \mathbb{E}[W] &= \mathbb{E}[\mathbb{E}[W|(P_i)_{i \in \mathbb{N}}]] \\
-&= \mathbb{E}[P_i\sum_{i=1}^{\infty}\mathbb{P}(W = P_i|(P_i)_{i \in \mathbb{N}})] \\
+&= \mathbb{E}[\sum_{i=1}^{\infty}P_i\mathbb{P}(W = P_i|(P_i)_{i \in \mathbb{N}})] \\
 &= \mathbb{E}[\sum_{i=1}^{\infty}P_i^2].
 \end{align}
 Nach Hoeffdings Gesetz der großen Zahlen \ref{hoeffding theorem}, gilt
@@ -107,7 +108,7 @@ Wir definieren $v \prec w$, falls $v$ ein Vorfahren von $w$ ist. Dann gilt durch
     0 \leq \tilde{Y}_n - Y_n &= 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}(f(\textbf{X}_k,\textbf{X}_l)-h(v_k \wedge v_l)) \nonumber\\
     &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}f(\textbf{X}_k,\textbf{X}_l) \nonumber \\
     &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}H_n^* \nonumber \\
-    &\leq 2\sum_{k=1}^{n}H_nH_n^*  = 2nH_nH_n^* \label{Abschätzung Tiefe}\\
+    &\leq 2\sum_{k=1}^{n}H_nH_n^*  = 2nH_nH_n^* \label{Abschätzung Tiefe}
 \end{align}
 wobei die letzte Ungleichung Wahr ist, da ein Knoten höchstens $H_n$ Vorfahren hat. \\
 Nun hat der tiefst-liegende Knoten $k$ die Tiefe $H_n$ und falls der Vaterknoten mit $l$ bezeichnet wird, so gilt 
@@ -123,10 +124,22 @@ Und somit
 \[
 \mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m) = \sum_{i_1,...,i_m \in \mathbb{N}}\prod_{j=1}^{m}\mathbb{E}[P_{i_j}^2]  =: a^m,
 \]
-für $a := \sum_{i=1}^{\infty}\mathbb{E}[P_i^2] < 1$. Wir können jetzt $H^*_n$ abschätzen. Dafür wählen wir $c \geq 4 / |\log{a}$ und rechnen.
+für $a := \sum_{i=1}^{\infty}\mathbb{E}[P_i^2] < 1$. Wir können jetzt $H^*_n$ abschätzen. Dafür wählen wir $c \geq 4 / |\log{a}|$ und rechnen
 \begin{align*}
 \mathbb{P}(H^*_n \geq m) &\leq \sum_{l < k \leq n} \mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m) = {n\choose 2}\mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m)\\
 &\leq n^2\mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m) \leq n^2a^m \leq n^2a^{c \log{n}} \leq n^{-2}.
 \end{align*}
 Da $\sum_{n \geq 1}\frac{1}{n^2} < \infty$, folgt mit Borel-Cantelli $H_n \leq c \log{n}$ P-f.s. für $n \to \infty$. Nun gilt mit \ref{trivial inequality} und \ref{Abschätzung Tiefe}, dass $(\tilde{Y}_n - Y_n) \in O(n\log^2(n))$ und somit ist die Behauptung $(\tilde{Y}_n-Y_n)/n^2 \rightarrow 0 $ P-f.s. gezeigt. 
+\end{proof}
+\begin{Korollar}
+    Für ein \textit{linear preferential attachment tree} mit Parametern $(\chi,\rho)$ mit $\chi+ \rho > 0$ existiert eine Zufallsvariable $Q$, sodass $Y(T_n^{\chi,\rho})/n^2 \to Q$ P-f.s. Weiter hat $Q$ den Erwartungswert 
+    \[
+        \mathbb{E}[Q] = \rho.
+    \]
+\end{Korollar}
+\begin{proof}
+    Das $Q$ existiert folgt direkt aus Satz \ref{big Q theorem}. Nach Satz \ref{Verteilung W}, ist $W \sim \beta(\rho,1)$ und hat somit Erwartungswert $\frac{\rho}{\rho + 1}$. Satz \ref{big Q theorem} liefert nun
+    \begin{equation*}
+        \mathbb{E}[Q] = \frac{\mathbb{E}[W]}{1-\mathbb{E}[W]} = \frac{\frac{\rho}{\rho + 1}}{\frac{1}{\rho+1}} = \rho
+    \end{equation*}
 \end{proof}

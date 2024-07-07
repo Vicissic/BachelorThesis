@@ -1,0 +1,33 @@
+\chapter*{Anhang}
+% LTeX: language=de-DE
+\begin{lemma}
+Die Anzahl der Partitionen von $[n]$ mit Klassengröße in Reihenfolge ihres Erscheinens ist durch \ref{combinatorial equation} gegeben.
+\end{lemma}
+\begin{proof}
+    Das $\#(\textbf{n})$ tatsächlich die Form \ref{combinatorial equation} hat, lässt sich durch Betrachtung von
+    \begin{align*}
+   \Omega_{\textbf{n}} = \{ \textbf{x}:= (x_{n_1}^{1},x_{n_1}^{2},...,x_{n_1}^{n_1},x_{n_2}^{1},x_{n_2}^{2},...,x_{n_k}^{n_k})|& \textbf{n}:= (n_1,...,n_k), \sum_{i=1}^{k}n_i=  n \\
+   &,\textbf{x} \in \mathcal{P}(n)\\
+   &, x_{n_i}^j < x_{n_i}^{j+1}\hspace{5pt} \forall  i \in \{1...k\} \forall j \in \{1...n_i-1\} \\
+   &, x^1_{n_i} < x^1_{n_i+1} \hspace{5pt} \forall i \in \{1...k\}\}
+    \end{align*} 
+    nachweisen. Es gilt
+    \[
+   \#(\textbf{n}) =  |\Omega_\textbf{n}|
+    \]
+    und wir berechnen nun $|\Omega_\textbf{n}|$. Es gibt $n!$ Möglichkeiten $[n]$ zu permutieren, nach den Bedingungen von $\Omega_n$ muss aber $x_{n_i}^1$ für alle $i$ kleiner sein als jede darauffolgende Zahl in der Liste. Formal beschrieben bedeutet das, falls $\textbf{x}_i, 1 \leq i \leq n$ die i-te Komponente von $\textbf{x}$ ist, so ist $\textbf{x}_{n_i} < \textbf{x}_{j}$ $\forall i \in \{n_i+1,...,n\}$. Sei  
+    \begin{align*}
+   \Omega^1_{\textbf{n}} = \{ \textbf{x}:= (x_{n_1}^{1},x_{n_1}^{2},...,x_{n_1}^{n_1},x_{n_2}^{1},x_{n_2}^{2},...,x_{n_k}^{n_k})|& \textbf{n}:= (n_1,...,n_k), \sum_{i=1}^{k}n_i=  n \\
+   &,\textbf{x} \in \mathcal{P}(n)\\
+   &, \textbf{x}_{n_i} < \textbf{x}_j \forall i \in \{1...k\},\forall j \in \{n_i+1,...,n\}\}
+    \end{align*} 
+    so ist
+    \[
+    |\Omega^1_{\textbf{n}}| = \frac{n!}{n(n-n_1)(n-n_2-n_1)...(n-\sum_{i=1}^{k-1}n_i)}.
+    \]
+    Um von $|\Omega_\textbf{n}^1|$ auf $|\Omega_\textbf{n}|$ zu kommen fehlt uns in jedem der einzelnen Komponenten $n_i$ die Permutationen der $n_i -1$ nachfolgenden Zahlen nach jedem der $\textbf{x}_{n_i}$ zu zählen. Da es aber $\prod_{i=1}^{k}(n_i-1)!$ davon gibt, gilt 
+    \[
+     |\Omega_\textbf{n}| = \frac{|\Omega_\textbf{n}^1|}{\prod_{i=1}^{k}(n_i-1)!}
+    \]
+    und die Behauptung ist gezeigt.
+\end{proof}
