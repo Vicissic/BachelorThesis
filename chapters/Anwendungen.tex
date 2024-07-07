@@ -6,7 +6,7 @@
     \[
         Y := Y(T) = \sum_{v \neq w}h(v \wedge w),
     \]
-    wobei wir die Summe über geordnete Paare $(v,w)$ definieren. Die Summe über geordnete Paare ist durch Symmetrie von $v \wedge w$ gleich der Hälfte der Summe über ungeordnete Paare. 
+    wobei wir die Summe über geordnete Paare $(v,w)$ definieren. Die Summe über geordnete Paare ist durch Symmetrie von $v \wedge w$ gleich dem doppelten der Summe über ungeordnete Paare. 
 \end{Definition}
 \begin{theorem}\textnormal{Hoeffdings Gesetz großer Zahlen für U-Statistiken}\\
     \label{hoeffding theorem}
@@ -32,11 +32,13 @@
     Zusätzlich erfüllt $Q$ die Verteilungs-Fixpunktgleichung (Distributional Fixed point equation)
     \begin{equation}
         Q \stackrel{\mathcal{L}}{=} \sum_{i=1}^{\infty}P_i^2(1+Q^{(i)}),
+        \label{second equation of Q theorem}
     \end{equation} 
     wobei die $Q^{(i)}$ unabhängig voneinander und von $(P_i)_{i \in \mathbb{N}}$ sind, und $Q^{(i)} \stackrel{\mathcal{L}}{=}Q$. 
     Weiter gilt, mit $W$ so definiert wie nach Bemerkung \ref{Bemerkung PD Verteilungen}, dass 
 \begin{equation}
     \mathbb{E}[Q] = \frac{\mathbb{E}[W]}{1 - \mathbb{E}[W]}.
+        \label{third equation of Q theorem}
 \end{equation}
 \end{theorem}
 \begin{proof}
@@ -56,26 +58,37 @@
   falls beide gegenseitig kein Vorfahren vom anderen sind und $\textbf{X}^k$ bzw. $\textbf{X}^l$ die zugehörende Sequenz vom Knoten $v_k$ bzw. $v_l$ ist. In dem Falle das $v_l$ ein Vorfahren von $v_k$ ist, gilt 
   \begin{equation}
     \label{inequality for height}
-    f(\textbf{X}^k,\textbf{X}^l) \geq h(v_k,v_l)
-  \end{equation}. \\
-  Mithilfe dieser Definition definieren wir nun unsere Approximation durch 
+    f(\textbf{X}^k,\textbf{X}^l) \geq h(v_k,v_l).
+  \end{equation} \\
+  Mithilfe dieser Definition definieren wir unsere Approximation durch 
   \[
     \tilde{Y}_n = 2\sum_{l < k \leq n}f(\textbf{X}^k,\textbf{X}^l).
   \]
-Bedingt auf alle \textit{Split Vektoren} $\mathcal{P}^{v}$, bekommen wir mit $\chi$ definiert als Indikator Funktion.
+Bedingt auf alle \textit{Split Vektoren} $\mathcal{P}^{v}$, bekommen wir mit $\chi$ definiert als Indikator Funktion. \textcolor{red}{Warum verschwindet die Bedingung?}
 \begin{align}
-\mathbb{E}[f(\textbf{X}^1,\textbf{X}^2)|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}] &= \mathbb{E}[\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\chi\{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}] \nonumber\\
-&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\mathbb{E}[\chi\{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}] \nonumber\\
+\mathbb{E}[f(\textbf{X}^1,\textbf{X}^2)|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}] &=\sum_{m=1}^{\infty}\mathbb{P}({f(\textbf{X}^1,\textbf{X}^2) \geq m}|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}) \nonumber\\
+&=\sum_{m=1}^{\infty}\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j})   \nonumber\\
+&=\sum_{m=1}^{\infty}\mathbb{P}(\bigcup_{i_1,...,i_m \in \mathbb{N}} \{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j) \}   \nonumber\\
+&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\mathbb{P}(\{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}) \nonumber\\
 &=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{1,j} = i_j )\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{2,j} = i_j ) \nonumber\\
-&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}(\prod_{j=1}^{m}P_{i_j}^{(i_1...i_{j-1})})^2 =: Q.
+&=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}(\prod_{j=1}^{m}P_{i_j}^{(i_1...i_{j-1})})^2 =: Q \label{Gleichungskette Tiefe}.
 \end{align}
 Mit der Turmeigenschaft zusammen mit der Voraussetzung, dass die $P^{(v)}$ i.i.d sind, folgt 
 \begin{align}
 \mathbb{E}[f(\textbf{X}^1,\textbf{X}^2) ] = \mathbb{E}[Q] &=\sum_{m=1}^{\infty}\sum_{i_1,...,i_m \in \mathbb{N}}\prod_{j=1}^{m}\mathbb{E}[P_{i_j}^{2}] \nonumber\\
  &= \sum_{m=1}^{\infty}(\sum_{i =1}^{\infty}\mathbb{E}[P_{i}^{2}])^m \nonumber \\
- &= \frac{1}{1- \sum_{i=1}^{\infty}\mathbb{E}[P_i^2]}-1 \nonumber.
+ &= \frac{1}{1- \sum_{i=1}^{\infty}\mathbb{E}[P_i^2]}-1  = \frac{\sum_{i=1}^{\infty}\mathbb{E}[P_i^2]}{1- \sum_{i=1}^{\infty}\mathbb{E}[P_i^2]}  \nonumber.
 \end{align}
-Wobei wir in die letzte Gleichung die Summenformel für eine geometrische Reihe ausgenutzt haben, da $\sum_{i=1}^{\infty} P_i^2 \leq \sum_{i=1}^{\infty} P_i = 1$ mit positiver Wahrscheinlichkeit $\sum_{i=1}^{\infty} \mathbb{E}[P_i^2] < 1$ impliziert. Die zweite Behauptung des Satzes (\ref{first equation of Q theorem}) ist somit gezeigt.
+Wobei wir in die letzte Gleichung die Summenformel für eine geometrische Reihe ausgenutzt haben, da $\sum_{i=1}^{\infty} P_i^2 \leq \sum_{i=1}^{\infty} P_i = 1$ mit positiver Wahrscheinlichkeit, $\sum_{i=1}^{\infty} \mathbb{E}[P_i^2] < 1$ impliziert. Die zweite Behauptung des Satzes (\ref{first equation of Q theorem}) ist somit gezeigt. Für die letzte Behauptung \ref{third equation of Q theorem}, nutzen wir 
+\[
+    P(W=P_i|(P_i)_{i \in \mathbb{N}}) = P_i.  
+\]  
+und folgern
+\begin{align}
+\mathbb{E}[W] &= \mathbb{E}[\mathbb{E}[W|(P_i)_{i \in \mathbb{N}}]] \\
+&= \mathbb{E}[P_i\sum_{i=1}^{\infty}\mathbb{P}(W = P_i|(P_i)_{i \in \mathbb{N}})] \\
+&= \mathbb{E}[\sum_{i=1}^{\infty}P_i^2].
+\end{align}
 Nach Hoeffdings Gesetz der großen Zahlen \ref{hoeffding theorem}, gilt
 \[
     \frac{\tilde{Y}_n}{n(n-1)} \rightarrow Q \hspace{5pt} \textnormal{P -f.s.} \hspace{5pt} \textnormal{für } n \to \infty.
@@ -90,20 +103,30 @@ die Höhe von $T_n := T_n^\mathcal{P}$ und
 H^*_n := max\{f(\textbf{X}_k,\textbf{X}_l) : l < k \leq n\}.
 \end{equation}
 Wir definieren $v \prec w$, falls $v$ ein Vorfahren von $w$ ist. Dann gilt durch \ref{inequality for height}
-\begin{align*}
-    0 \leq \tilde{Y}_n - Y_n &= 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}(f(\textbf{X}_k,\textbf{X}_l)-h(v_k \wedge v_l))\\
-    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}f(\textbf{X}_k,\textbf{X}_l) \\
-    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}H_n^* \\
-    &\leq 2\sum_{k=1}^{n}H_nH_n^*  = 2nH_nH_n^*\\
-\end{align*}
+\begin{align}
+    0 \leq \tilde{Y}_n - Y_n &= 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}(f(\textbf{X}_k,\textbf{X}_l)-h(v_k \wedge v_l)) \nonumber\\
+    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}f(\textbf{X}_k,\textbf{X}_l) \nonumber \\
+    &\leq 2\sum_{k=1}^{n}\sum_{v_l \prec v_k}H_n^* \nonumber \\
+    &\leq 2\sum_{k=1}^{n}H_nH_n^*  = 2nH_nH_n^* \label{Abschätzung Tiefe}\\
+\end{align}
 wobei die letzte Ungleichung Wahr ist, da ein Knoten höchstens $H_n$ Vorfahren hat. \\
 Nun hat der tiefst-liegende Knoten $k$ die Tiefe $H_n$ und falls der Vaterknoten mit $l$ bezeichnet wird, so gilt 
-\[
-    H^*_n \geq f(\textbf{X}^k,\textbf{X}^l) \geq H_n - 1.
-\]
-Sei $m := m_n := \lceil c log(n) \rceil$. Dann gilt 
+\begin{equation}
+    H^*_n \geq f(\textbf{X}^k,\textbf{X}^l) \geq H_n - 1. \label{trivial inequality}
+\end{equation}
+Sei $m := m_n := \lceil c \log(n) \rceil$. Dann gilt, wie in der Gleichungskette \ref{Gleichungskette Tiefe},
 \begin{align*}
-\mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m| \{\mathcal{P}^v, v \textnormal{ Knoten}\}) = \mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m| \{\mathcal{P}^v, v \textnormal{ Knoten}\}) \\
-\mathbb{P}(X)
+\mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m| \{\mathcal{P}^v, v \textnormal{ Knoten}\}) &=\sum_{i_1,...,i_m \in \mathbb{N}} \mathbb{P}( \{\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j} = i_j \}) \\ 
+&=\sum_{i_1,...,i_m \in \mathbb{N}}(\prod_{j=1}^{m}P_{i_j}^{(i_1,...,i_{j-1})}) ^2.
 \end{align*}
+Und somit
+\[
+\mathbb{P}(f(\textbf{X}^1,\textbf{X}^2)\geq m) = \sum_{i_1,...,i_m \in \mathbb{N}}\prod_{j=1}^{m}\mathbb{E}[P_{i_j}^2]  =: a^m,
+\]
+für $a := \sum_{i=1}^{\infty}\mathbb{E}[P_i^2] < 1$. Wir können jetzt $H^*_n$ abschätzen. Dafür wählen wir $c \geq 4 / |\log{a}$ und rechnen.
+\begin{align*}
+\mathbb{P}(H^*_n \geq m) &\leq \sum_{l < k \leq n} \mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m) = {n\choose 2}\mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m)\\
+&\leq n^2\mathbb{P}(f(\textbf{X}_k,\textbf{X}_l) \geq m) \leq n^2a^m \leq n^2a^{c \log{n}} \leq n^{-2}.
+\end{align*}
+Da $\sum_{n \geq 1}\frac{1}{n^2} < \infty$, folgt mit Borel-Cantelli $H_n \leq c \log{n}$ P-f.s. für $n \to \infty$. Nun gilt mit \ref{trivial inequality} und \ref{Abschätzung Tiefe}, dass $(\tilde{Y}_n - Y_n) \in O(n\log^2(n))$ und somit ist die Behauptung $(\tilde{Y}_n-Y_n)/n^2 \rightarrow 0 $ P-f.s. gezeigt. 
 \end{proof}
