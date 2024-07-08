@@ -9,12 +9,15 @@ Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlic
 \[
 w_k = \chi k + \rho \hspace{5pt}, \chi \in \mathbb{R}\hspace{5pt} \rho > 0
 \]
-betrachtet, woher der Name \textit{linear preferential attachment trees} auch stammt. Da der Vaterknoten lediglich proportional zu der Folge von Gewichten ausgesucht wird, ändert die Skalierung der Folge nicht die Generierung der Baumstruktur, also beschränken wir die Betrachtung von den Gewichten auf 3 Spezialfälle:
+betrachtet, woher der Name \textit{linear preferential attachment trees} auch stammt. Da der Vaterknoten lediglich proportional zu der Folge von Gewichten ausgesucht wird, ändert die Skalierung der Folge nicht die Verteilung der Baumstruktur, und somit kann die Betrachtung von den Gewichten auf 3 Spezialfälle unterteilt werden:
 \begin{enumerate}
     \item $\chi = 1$ ist der Fall vom \textit{general plane oriented recursive trees} \cite{panholzer2007level} 
     \item $\chi = 0$ ist der Fall vom \textit{random recursive trees}
-    \item $\chi = -1$ ist der Fall von \textit{m-ary increasing trees}
+    \item $\chi = -1$ ist der Fall von \textit{m-ary increasing trees}.
 \end{enumerate}
+\begin{Bemerkung}
+    Der Fall $\rho = -1$ kann, ohne zusätzliche Annahmen, zu negativen Gewichten führen. Die zusätzlichen Annahmen die gebraucht werden um dies zu vermeiden, sowie andere Eigenschaften von diesen Bäumen, werden im Kapitel \textit{m-ary increasing trees} behandelt.
+\end{Bemerkung}
 \begin{theorem}
 \cite[Lemma 3.1]{janson2019random}
 \label{Gewichte Satz}
