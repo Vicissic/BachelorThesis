@@ -123,11 +123,12 @@ Das Haupttheorem ist nun folgendes.
 \end{theorem} 
 Bevor wir zum Beweis kommen, definieren wir die $\beta$-Verteilung und nennen Eigenschaften.
 \begin{Definition}
+    \label{definition beta distribution}
     Eine Zufallsvariable $X$ ist $\beta(a,b),$ mit $ a,b > 0 $ verteilt, falls $X$ die Wahrscheinlichkeitsdichte 
     \[
         f(x) =
         \begin{cases}
-        \frac{1}{B(a,b)} x^{a-1}(1-x)^{b}, \hspace{5pt} &x \in [0,1]  \\
+        \frac{1}{B(a,b)} x^{a-1}(1-x)^{b-1}, \hspace{5pt} &x \in [0,1]  \\
         0 &\textnormal{sonst},
         \end{cases} 
    \]
