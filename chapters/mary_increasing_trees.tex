@@ -82,5 +82,17 @@ Die Betrachtungsweise von $T_n^{-1,m}$, als geordnete Bäume lässt sich auch au
     für $x_i \geq 0$ und $\sum_{i=1}^{m}x_i = 1$ und für sonstige $(x_1,...,x_m)$ durch $0$ gegeben ist.
 \end{Definition}
 \begin{proof}[Beweis von Satz \ref{Satz mary increasing trees}]
-    
+    Wir beginnen mit der Existenz vom Split Vektor $\mathcal{P}$.  Aus Satz \ref{main theorem paper} folgt, dass $T_n^{-1,m} \stackrel{\mathcal{L}}{=}T_n^{\mathcal{P}}$, mit $\mathcal{P} \sim PD(-\frac{1}{m-1},\frac{m}{m-1})$, falls wir beide Bäume als ungeordnet interpretieren. Zur Überführung in dem geordneten Fall betrachte man eine zufällige uniforme Permutation von $\mathcal{P}$, bezeichnet mit $\tilde{\mathcal{P}}$. In diesem Fall ist durch Symmetrie sowohl im ungeordneten als auch im geordneten Fall $T_n^{-1,m} \stackrel{\mathcal{L}}{=}T_n^{\tilde{\mathcal{P}}}$, denn beide Bäume sind invariant unter zufälligen Umbenennungen von allen Kindern der Knoten. \\
+    Es fehlt zu zeigen, dass diese Permutation von einer $PD$ Verteilung, tatsächlich einer $Dir$ Verteilung entspricht. Wir definieren für ein \textit{principal subtree} $T^j_n$, $N_j(n) := |T^j_n|$ als Anzahl der Knoten und $N_j^e(n)$ als Anzahl der externen Knoten von $T_j^n$. Dann ist $N_j^e(n) = (m-1)N_j(n) + 1$ durch eine einfache Induktion, denn für jeden zusätzlichen Knoten der zu $T_j^n$ hinzukommt, kommen von diesem Knoten aus zusätzliche $m$ externe Knoten hinzu und ein externer Knoten wird durch den hinzugekommenen Knoten ersetzt. \\
+    Wir interpretieren jetzt $T_n^{-1,m}$ wieder als ungeordneten Baum und identifizieren die externen Knoten im \textit{principal Subtree} $T^j_n$ als Bälle mit Farbe $j$. Die Anzahl der externen Knoten mit Farbe $j$ folgen jetzt einem Polya Urnen Prozess. Am Anfang gibt es in der Urne einen Ball von jeder Farbe (Der Baum besteht nur aus der Wurzel) und in jedem Schritt wird ein zufälliger Ball gezogen und anschließend mit $m-1$ zusätzlichen Bälle derselben Farbe in die Urne zurückgelegt.  Dieser Art von verallgemeinerten Polya Urnen Prozess wurde in \cite{athreya1969characteristic} untersucht und bezogen auf unsern Fall, konvergiert
+    \[
+        \left(\frac{N^{e}_j(n)}{(m-1)n+1}\right)_{j \in \{1...m\}} = \left(\frac{(m-1)N_j(n) + 1}{(m-1)n+1}\right)_{j \in \{1...m\}} \rightarrow (X_j)_{j \in \{ 1...m\}} \hspace*{5pt} P-f.s \hspace*{5pt} \textnormal{für } n \to \infty,
+    \]
+    mit $(X_j)_{j \in \{1...m\}} \sim Dir(\frac{1}{m-1},...,\frac{1}{m-1})$. \\
+    Insbesondere folgt $N_j(n)/n \to (X_j)$ P-f.s. Dieser Grenzwert ist aber bereits der Grenzwert der unseren Wahrscheinlichkeitsvektor liefert. Denn ähnlich zu Satz \ref{Verteilung W}, liefert uns das Gesetz der großen Zahlen, gegeben den Split Vektor an der Wurzel,
+    \[
+        \frac{N_j(n)}{n} \rightarrow P_j \hspace{5pt} \textnormal{P-f.s.} \hspace*{5pt} \textnormal{für } n \to \infty \hspace*{5pt} \forall j \in \{1...m\}.
+    \]
+    In anderen Worten ist $(P_j)_{j \in \{1...m\}} \sim Dir(\frac{1}{m-1},...,\frac{1}{m-1})$ und die Behauptung ist gezeigt.
+
 \end{proof}
