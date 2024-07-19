@@ -32,3 +32,48 @@ Die Anzahl der Partitionen von $[n]$ mit Klassengröße in Reihenfolge ihres Ers
     \]
     und die Behauptung ist gezeigt.
 \end{proof}
+\begin{lemma}
+    \label{lemma cases crp}
+    Damit ein Paar $(\alpha,\theta)$ einen wohldefinierten \textit{chinese restaurant process} definiert, muss $(\alpha,\theta)$ eine von folgenden beiden Bedingungen erfüllen:
+    \begin{enumerate}
+        \item $0 \leq \alpha < 1$ und $\theta > -\alpha$
+        \item $\alpha < 0$ und $\theta = -m \alpha$ für ein $m \in \mathbb{N}$.
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+Es muss geprüft werden, ob $\frac{n_j- \alpha}{n+\theta}$ und $\frac{\theta + k\alpha}{n + \theta}$  stets zwischen $0$ und $1$ liegen. Wir betrachten jetzt 5 Beispielfälle einzeln, die restlichen folgen mit analogen Argumenten.\\
+\\
+\textit{Fall 1}: $\alpha =1$\\
+Dies entspricht dem Fall, dass jeder Gast an einen neuen Tisch gesetzt wird. Falls wir die Beta Verteilung um $\beta(0,l) = \delta_0, l \in \mathbb{R}$, also die deterministische Zufallsvariable mit Wert 0 erweitern, so gilt Satz \ref{Main theorem CRP} auch für diesen Fall. Die dazugehörige Folge $(P_1,P_2...)$ wäre dann die $0$ Folge.
+\\
+\textit{Fall 2}: $\alpha >1$ und $-1<\theta< 0$\\
+Bei $n=1$ ist $k=1$ und somit 
+\[\frac{\theta + k\alpha}{n + \theta} = \frac{\theta + \alpha}{1 + \theta} > 1
+\] \\ 
+\textit{Fall 3}: $\alpha >1$ und $\theta \neq -l\alpha, l \in \mathbb{N}$\\
+In diesem Fall wollen wir zeigen, dass 
+\[
+\frac{n_j-\alpha}{n + \theta}<0
+\]
+ für mögliche $n_j \in \mathbb{N}$. Es reicht, falls wir zeigen, dass für alle $n \in \mathbb{N}$ wir eine Anordnung von Tischen finden, sodass mindestens ein Tisch mit nur einem Gast besetzt ist. Dann würden $n \in \mathbb{N}$ existieren, nämlich $\forall n > \lceil l \alpha \rceil$, sodass 
+ \[
+ \frac{n_j-\alpha}{n + \theta}= \frac{1-\alpha}{n + \theta}<0.
+ \] 
+ Nun ist für jede mögliche Anordnung von Tischen mit $n$ Gästen, die Wahrscheinlichkeit einen neuen Tisch zu beschaffen $\frac{\theta + k\alpha}{n + \theta} \neq 0$ und somit wird es im nächsten Schritt ein Tisch mit nur einem Gast geben. Dieser Fall ist deshalb ausgeschlossen.\\
+\textit{Fall 4}: $\alpha >1$ und $\theta = -\alpha$\\
+Dieser Fall ist Analog zu dem Fall $\alpha < 0$ und $-m \alpha$ und Satz \ref{Main theorem CRP} kann auch mit diesem Fall erweitert werden.\\
+\textit{Fall 5}: $\alpha >1$ und $\theta = -l\alpha, l \geq 2, l \in \mathbb{N}$\\
+Wir schließen zuerst den Fall $-\theta \in \mathbb{N}$ aus, in diesem Fall würde es für ein $n \in \mathbb{N}$ zu dem Fall kommen, wo der Nenner gleich $0$ und somit undefiniert wäre. Infolgedessen, ist auch $\alpha \notin \mathbb{N}$, denn wenn $\alpha \in \mathbb{N}$, dann auch $-\theta \in \mathbb{N}$ wäre.\\
+Wir betrachten nun die Anordnung wo jeder Gast sich an den ersten Tisch setzt. Die Wahrscheinlichkeit, dass sich der $(n+1)$-te Gast sich an den ersten Tisch setzt, da $n_j = n$, ist 
+\[
+    \frac{n- \alpha}{n - l \alpha}.   
+\]
+Nach der ersten Bemerkung, dass $\alpha \notin \mathbb{N}$, ist diese Wahrscheinlichkeit nie $0$, also muss 
+\[
+   0<  \frac{n- \alpha}{n - l \alpha} \leq 1.   
+\]
+Da aber es eine natürliche Zahl $n$ geben muss, die zwischen $\alpha$ und $l \alpha$ liegt, ist die Wahrscheinlichkeit für diese Zahl $<0$ und somit ist diese Möglichkeit auch nicht zulässig.
+\\
+\\
+Die restlichen Fälle können mit analogen Argumenten geprüft werden.
+\end{proof}

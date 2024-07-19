@@ -30,7 +30,7 @@ Wir beginnen mit den Definitionen.
     \end{enumerate}
 \end{Definition}
 \begin{Bemerkung}
-    Das bei einer symmetrischen Funktion $p$, die zufällige Partition tatsächlich Austauschbar ist, folgt aus der Definition und der Diskussion in \cite[Seite 85]{aldous2006ecole}: eine Partition heißt austauschbar, falls 
+    Dass bei einer symmetrischen Funktion $p$, die zufällige Partition tatsächlich Austauschbar ist, folgt aus der Definition und der Diskussion in \cite[Seite 85]{aldous2006ecole}: eine Partition heißt austauschbar, falls 
     \[
          \mathcal{L}(\Pi_n) = \mathcal{L}(\pi(\Pi_{n})),
     \]
@@ -41,7 +41,15 @@ Wir beginnen mit den Definitionen.
 \end{Definition}
 \begin{lemma}
     \label{lemma partielle austauschbarkeit}
-    Sei $\Pi_n$ eine partiell austauschbare zufällige Partition von $[n]$ mit \textit{PEPF} $p(\textbf{n})$ und $\Pi_m$ die Restriktion von $\Pi_n$ auf $[m], m \in \{1...n\}$, dann gilt mit $\textbf{m} := (m_1,...,m_k)\in \bigcup_{i = 1 }^{n} \mathbb{N}^i$, $\sum_{i=1}^{k}m_i = m$ und $\textbf{m}^{i+} = \textbf{m} + e_i, i \in \{1...k+1\}$ für einen Einheitsvektor $e_i$:
+    Sei $\Pi_n$ eine partiell austauschbare zufällige Partition von $[n]$ mit \textit{PEPF} $p(\textbf{n})$ und $\Pi_m$ die Restriktion von $\Pi_n$ auf $[m], m \in \{1...n\}$. Dann gilt mit 
+    \[
+    \textbf{m} := (m_1,...,m_k), \hspace*{5pt} \sum_{i=1}^{k}m_i = m,\hspace*{5pt} m_i \in \mathbb{N} 
+    \]
+    und 
+    \[ 
+    \textbf{m}^{i+} = \textbf{m} + e_i =\textbf{m} + \overbrace{\underbrace{(0,...,0}_{i-1 \textnormal{ 0-en}}1,0,...,0)}^{k+1} , i \in \{1...k+1\}
+    \]
+     für Einheitsvektoren $e_i$:
 \begin{center} 
     $\Pi_m$ ist partiell Austauschbar mit PEPF $p(\textbf{m}):=  \sum_{j=1}^{k+1} p(\textbf{m}^{j+})$.
 \end{center}
@@ -67,7 +75,7 @@ Wir beginnen mit den Definitionen.
         \label{combinatorial equation}
         \#(\textbf{n}):= \frac{n!}{n_k(n_k + n_{k-1})...(n_k+...+n_1)\prod_{i=1}^{k}(n_i-1)!},
     \end{equation}
-    die Anzahl der Partitionen von $[n]$ mit Klassengrößen in Reihenfolge ihres Erscheinens durch $\textbf{n}$ gegeben (Siehe Bemerkung \ref{combinatorial bemerkung}). Angenommen $S_n \neq 1$, dann gilt aber $S_n> 0$ und wir definieren $q(\textbf{n}) := \frac{p(\textbf{n})}{S_n}$. Dann ist $q(\textbf{n})$ aus Lemma \ref{lemma partielle austauschbarkeit} zusammen mit \ref{markov chain} eine \textit{PEPF}, also $q(1) = \frac{p(1)}{S_n} = 1 \Rightarrow S_n =1$, somit ist $p(\textbf{n})$ eine \textit{EPPF} und die Behauptung ist gezeigt. 
+    die Anzahl der Partitionen von $[n]$ mit Klassengrößen in Reihenfolge ihres Erscheinens durch $\textbf{n}$ gegeben (Siehe Bemerkung \ref{combinatorial bemerkung}). Angenommen $S_n \neq 1$, dann gilt aber $S_n> 0$ und wir definieren $q(\textbf{n}) := \frac{p(\textbf{n})}{S_n}$. Dann ist $q(\textbf{n})$ aus Lemma \ref{lemma partielle austauschbarkeit} zusammen mit \ref{markov chain} eine \textit{PEPF}, also $q(1) = \frac{p(1)}{S_n} = 1 \Rightarrow S_n =1$, somit ist $p(\textbf{n})$ eine \textit{PEPF} und die Behauptung ist gezeigt. 
 \end{proof}
 \begin{Bemerkung}
     \label{combinatorial bemerkung}

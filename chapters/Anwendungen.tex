@@ -1,5 +1,6 @@
 \chapter{Anwendungen}
 % LTeX: language=de-DE
+Dieses Kapitel nutzt die Hauptresultate aus dem vorherigen Kapitel um Aussagen über eine Funktion der Tiefe von Knoten in einem Baum für Split Bäume, als auch für \textit{Linear preferential trees} zu beweisen.  
 \begin{Definition}
     \label{definition height trees}
     Für einen gewurzelten Baum $T$, sei $h(v)$ die Tiefe eines Knotens $v$ und sei $v\wedge w$ der letzte gemeinsame Vorfahren von $v$ und $w$. Dann definieren wir die Funktion $Y$ als:
@@ -25,7 +26,7 @@
 \end{theorem}
 \begin{theorem}
     \label{big Q theorem}
-    Sei $(T_n^\mathcal{P})$ ein zufälliger Split Baum für einen \textit{Split Vektor} $\mathcal{P} = (P_i)_{i \in \mathbb{N}}$ und sei $Y_n := Y(T^\mathcal{P}_n)$ definiert wie in \ref{definition height trees}. Wir nehmen an, dass für ein $i \in \mathbb{N}$, $0< P_i < 1$ mit positiver Wahrscheinlichkeit. Dann existiert eine Zufallsvariable $Q$, sodass $Y_n/n^2 \rightarrow Q$ P-f.s. für $n \to \infty$. Weiter gilt 
+    Sei $(T_n^\mathcal{P})$ ein zufälliger Split Baum für einen \textit{Split Vektor} $\mathcal{P} = (P_i)_{i \in \mathbb{N}}$ und sei $Y_n := Y(T^\mathcal{P}_n)$ definiert wie in Definition \ref{definition height trees}. Wir nehmen an, dass für ein $i \in \mathbb{N}$, $0< P_i < 1$ mit positiver Wahrscheinlichkeit. Dann existiert eine Zufallsvariable $Q$, sodass $Y_n/n^2 \rightarrow Q$ P-f.s. für $n \to \infty$. Weiter gilt 
     \begin{equation}
         \label{first equation of Q theorem}
     \mathbb{E}[Q]  = \frac{1}{1-\mathbb{E}[\sum_{i \geq 1}P_i ]}-1 < \infty. 

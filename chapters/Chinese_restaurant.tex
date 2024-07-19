@@ -98,11 +98,11 @@ darstellen lassen. Korollar \ref{korollar pitman} ändert sich somit zu
    \end{align*}  
 
 \end{proof}
-Wir nutzen die bis jetzt entwickelte Theorie der austauschbaren Partitionen um eine Klasse von \textit{Chinese Restaurant Process} zu betrachten, welche für spätere Baumanalyse von Relevanz wird. Dafür ersetzen wir die zweite Regel in der Konstruktion vom verallgemeinerten \textit{Chinese Restaurant Process} mit genauen Wahrscheinlichkeiten. Für Parameter $\alpha$ und $\theta$ halten wir fest:
+Wir nutzen die bis jetzt entwickelte Theorie der austauschbaren Partitionen um eine Klasse von \textit{Chinese Restaurant Process} zu betrachten, welche für spätere Baumanalyse von Relevanz sein wird. Dafür ersetzen wir die zweite Regel in der Konstruktion vom verallgemeinerten \textit{Chinese Restaurant Process} mit genauen Wahrscheinlichkeiten. Für Parameter $\alpha$ und $\theta$ halten wir fest:
 \begin{itemize} 
     \item Falls zum Zeitpunkt des Eintritts des i-ten Kundes $k$ Tische mit jeweils $(n_1,...,n_k)$ Kunden besetzt sind, so setzt sich dieser mit Wahrscheinlichkeit $\frac{n_j-\alpha}{n + \theta}$ an Tisch $j \in \{1...k\}$ und mit Wahrscheinlichkeit $\frac{\theta + k\alpha}{n + \theta}$ an einen neuen Tisch $k+1$.
 \end{itemize}
-Damit die Wahrscheinlichkeitsregeln bei dieser Konstruktion erhalten bleiben, müssen $\alpha$ und $\theta$ entsprechend gewählt werden, dafür gibt es 2 Fälle \textcolor{red}{add proof of this}: 
+Damit die Wahrscheinlichkeitsregeln bei dieser Konstruktion erhalten bleiben, müssen $\alpha$ und $\theta$ entsprechend gewählt werden, dafür gibt es 2 Fälle (Siehe Anhang, Lemma \ref{lemma cases crp}): 
 \begin{enumerate}
     \item $ 0 \leq \alpha < 1$ und $\theta > - \alpha $ 
     \item $\alpha < 0$ und $\theta = -m \alpha$ für ein $m \in \mathbb{N}$

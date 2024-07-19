@@ -2,9 +2,10 @@
 % LTeX: language=de-DE
 %Das Kapitel beschreibt den Aufbau von \text{linear preferential trees} und wie diese zu Split Bäume 
 In diesem Kapitel werden \textit{general preferential trees} eingeführt und die Einbettung von diesen in Devroyes \textit{Split} Bäume besprochen. Wir beginnen mit der Konstruktion von den jeweiligen Bäumen.
-\\
-\\
-\textbf{\fontsize{14}{18}\selectfont Konstruktion von general preferential trees}\\
+%\\
+%\\
+%\textbf{\fontsize{14}{18}\selectfont Konstruktion von general preferential trees}\\
+\begin{section}{Konstruktion von general preferential trees}
 Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{Random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_{d(v)}$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
 \[
 w_k = \chi k + \rho \hspace{5pt}, \chi \in \mathbb{R}\hspace{5pt} \rho > 0
@@ -38,7 +39,7 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
     \[ 
         \forall j \geq 1  \hspace{6pt} \frac{N_j(n)}{n}  \rightarrow P_j \hspace{6pt} \text{für} \hspace{6pt} n \rightarrow \infty \hspace{6pt} \text{P-f.s.}.
   \]
-Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{\rho}{\chi+\rho}})$ haben. \textcolor{red}{add case 0} 
+Wobei die Zufallsvariablen  $P_j$ Verteilung $GEM(\frac{\chi}{\chi+\rho},{\frac{\rho}{\chi+\rho}})$ haben.  
 \end{theorem}
 \begin{proof}
     Da wir im Allgemeinen $\chi + \rho > 0 $ annehmen dürfen, und da die Multiplikation von allen $w_k$ mit einer Konstante nicht den Baum ändert, können wir o.B.d.A   $\chi + \rho = 1 $ annehmen. Das Argument folgt nun durch Übersetzung von \PsubT zu Zyklen in Permutationen und eine Bijektion zwischen \linpreft und Permutationen. Wir beginnen mit der Bijektion. \\
@@ -52,7 +53,9 @@ Es ist einfach zu zeigen, dass diese Abbildung von Bäumen zu Permutation, welch
 \begin{Bemerkung}
     Satz \ref{linpreft Grenzwert} wird eine zentrale Rolle bei der Bestimmung des \textit{Split Vektors} in der Einbettung von \textit{linear preferential attachment trees} in Devroyes Split Bäume spielen. Wir führen zuerst den Begriff und die Konstruktion der Split Bäume ein und kommen dann schließlich zu dieser Einbettung.  
 \end{Bemerkung}
-\textbf{\fontsize{14}{18}\selectfont Konstruktion von Split Bäumen}\\
+\end{section}
+%\textbf{\fontsize{14}{18}\selectfont Konstruktion von Split Bäumen}\\
+\begin{section}{Konstruktion von Split Bäumen}
 Sei $b \geq 2$ fest und $\mathcal{P} = (P_i)_{1 \leq i \leq b}$ ein zufälliger Wahrscheinlichkeitsvektor, also $P_i \geq 0$ und $\sum_{i=1}^{b}P_i = 1$. Sei $\mathcal{T}_b$ der unendliche Wurzelbaum, in dem jeder Knoten $b$ Kinder hat, beschriftet mit $1,...,b$. Wir geben jedem Knoten $v \in \mathcal{T}_b$ eine unabhängige Kopie von $\mathcal{P}$, die mit $\mathcal{P}^{(v)}$ bezeichnet wird. Jeder Knoten $v \in T_b$ kann maximal einen Knoten enthalten und falls dieser einen enthält, so nennen wir den Knoten \textit{voll}. Anfangs sind die Knoten leer und Bälle, beginnend mit der Wurzel, befüllen die Knoten nach folgenden zwei Regeln.
 \begin{enumerate}
     \item Ein Ball, der an einem leeren Knoten ankommt, bleibt dort. Dieser Knoten ist dann \textit{voll}.
@@ -62,7 +65,7 @@ Der zufällige Split Baum $T_n = T_n^{\mathcal{P}}$ ist nun der Baum der entsteh
 \begin{Bemerkung}
     Die hier vorgeführte Konstruktion ist nur eine Teilmenge von der allgemeineren Struktur von Devroyes Split Bäumen. In der Notation von Devroye \cite{devroye1998universal}, ist diese Teilmenge durch die Parameter $(s_0,s_1,s) = (1,0,1)$ festgelegt. Im weiteren Verlauf ist bei Bezugnahmen auf Split-Bäume stets dieser Spezialfall gemeint.
 \end{Bemerkung}
-
+\end{section}
 Mit dieser Vorarbeit können wir nun die \textit{linear preferential attachment trees} in die Split Bäume einbetten, indem wir auch Split Bäume mit $b = \infty$ zulassen.
 \begin{theorem}
     \label{main theorem paper}
