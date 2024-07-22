@@ -4,8 +4,14 @@ Oftmals ist es nützlich, die Menge $\{|A_1|,|A_2|,...,|A_k|\}$ der Größe der 
 \\
 Für eine Partition $P_n$ definieren wir $|P_n|$ als die Anzahl der Blöcke und betrachten die absteigende Folge der Größen der Blöcke $(N^\downarrow_{n,1},N^\downarrow_{n,2},...,N^\downarrow_{n,|P_n|},0,0...)$. Wir fügen also nach dem kleinsten Block $N^\downarrow_{n,|P_n|}$, eine unendliche Folge von Nullen hinzu. Wir haben also eine bijektive Identifizierung von der Menge der Partitionen von $n$ zur folgenden Menge der Nichtnegativen natürlichen Zahlen:
 \[
- \{(n_j)_{1\leq j \leq \infty}: n_1 \geq n_2 \geq ... \geq 0 \text{ und } \sum_{j=1}^{\infty}{n_j} = n\}
-\] 
+ \{(n_j)_{1\leq j \leq \infty}: n_1 \geq n_2 \geq ... \geq 0 \text{ und } \sum_{j=1}^{\infty}{n_j} = n\}.
+\]
+Die Aussage, die wir in diesem Kapitel beweisen, bezieht sich auf die relative Größe der Blockgrößen, also betrachten wir die normierte Form dieser Menge und definieren: 
+\begin{align}
+ \{(\frac{n_j}{n})_{1\leq j \leq \infty}: \frac{n_1}{n} \geq \frac{n_2}{n} \geq ... \geq 0 \text{ und } \sum_{j=1}^{\infty}{n_j} = n\}\\
+ \subset
+  \{(p_j^{\downarrow})_{1\leq j \leq \infty}: p_1^{\downarrow} \geq p_2^{\downarrow} \geq ... \geq 0 \text{ und } \sum_{j=1}^{\infty}{p_j^{\downarrow}} = 1\} =: \nabla 
+\end{align}
 
 Das Ziel ist es nun, eine ähnliche Aussage wie im Satz von de Finetti für Partitionen von $\mathbb{N}$ zu formulieren. Dazu starten wir mit dem Satz selbst.
 \begin{theorem}\cite[Theorem 3.1]{aldous2006ecole}{\textbf{De Finetti}}\\
@@ -27,7 +33,7 @@ L: \mathcal{M}_1([0,1]) &\to \nabla \\
 und nennen den oben beschrieben Prozess zur Verteilung $\mu$ den $L(\mu) = (p_j^\downarrow)_{j \in \mathbb{N}}$ \textit{-Paintbox Prozess}. Der Satz besagt nun:
 \begin{theorem}
 \textnormal{Kingman's Representation} \label{Kingmans representation}\\
-    Sei $\Pi := (\Pi_n)_{n \in \mathbb{N}}$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} $ $ \forall i \geq 1$ P-f.s. für $n \to \infty$ gegen ein $P^\downarrow_i$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung von einem $(P_i^\downarrow, i \geq 1)$ \textit{Paintbox Prozess}.
+    Sei $\Pi := (\Pi_n)_{n \in \mathbb{N}}$ eine austauschbare zufällige Partition von $\mathbb{N}$ und $(N^{\downarrow}_{n,i}, i \geq 1)$ die fallende Folge der Blockgrößen von $\Pi_n$, mit $N_{n,i}^\downarrow = 0$, falls $\Pi_n$ weniger als $i$ Blöcke hat. Dann konvergiert $\frac{N_{n,i}^\downarrow}{n} $ $ \forall i \geq 1$ P-f.s. für $n \to \infty$ gegen ein (zufälliges) $P^\downarrow_i$. Weiter ist die bedingte Verteilung von $\Pi_\infty$ gegeben $(P_i^\downarrow, i \geq 1)$ gleich der Verteilung von einem $(P_i^\downarrow, i \geq 1)$ \textit{Paintbox Prozess}.
 \end{theorem}
 \begin{proof}
 Sei $(U_i)_{i \in \mathbb{N}}$ eine Folge unabhängig in $[0,1]$ uniform verteilter Zufallsvariablen. Wir definieren 
@@ -35,7 +41,7 @@ Sei $(U_i)_{i \in \mathbb{N}}$ eine Folge unabhängig in $[0,1]$ uniform verteil
 F_i(\omega) &= \min{\{j| i \text{ und } j \text{ sind in der gleichen Komponente von }  \Pi(\omega)\}} \leq i \\
 Z_i &= U_{F_i}.
 \end{align*}
-$\Pi(\omega)$ ist also eine Partition mit Komponenten $\{i| Z_i(\omega) = z\}$ für $0 \leq z \leq 1$. $(Z_i)_{i \in \mathbb{N}}$ ist austauschbar, da wir $(Z_i)_{i \in \mathbb{N}} = g((\Pi_i)_{i \in \mathbb{N}},(U_i)_{i \in \mathbb{N}})$ für eine Abbildung $g$ auffassen können, und da Abbildungen austauschbarer Folgen austauschbar sind\footnote{Man beachte, dass hier die Folge $U_i$ auch von $\Pi$ unabhgängig sein sollte.}. Nach De Finetti gibt es ein zufälliges Maß $\alpha$, sodass bedingt auf $\alpha = \mu$, die $Z_i$ unabhängig identisch wie $\mu$ verteilt sind. Dies entspricht aber genau dem vorher beschriebenen $L(\mu)$\textit{-Paintbox Prozess} und die zweite Behauptung ist gezeigt. Für die erste Behauptung nutzen wir das starke Gesetz großer Zahlen. Dafür sei $\phi$ ein beliebiges Maß mit $L(\phi) = (p^\downarrow_i)_{i \in \mathbb{N}}$ und $X_i$ i.i.d $\phi$ verteilt. Dann gilt nach dem Gesetz $\frac{1}{n}\sum_{i=1}^{n}\chi_{\{X_i = x\}} \rightarrow \mathbb{P}(X_i = x) = \phi(x)$ P-f.s. für $n \to \infty$. Somit folgt auch $L_n(\Pi_n)...$ und wir sind fertig.\textcolor{red}{finish this proof and adjust this whole chapter.}
+$\Pi(\omega)$ ist also eine Partition mit Komponenten $\{i| Z_i(\omega) = z\}$ für $0 \leq z \leq 1$. $(Z_i)_{i \in \mathbb{N}}$ ist austauschbar, da wir $(Z_i)_{i \in \mathbb{N}} = g((\Pi_i)_{i \in \mathbb{N}},(U_i)_{i \in \mathbb{N}})$ für eine Abbildung $g$ auffassen können, und da Abbildungen austauschbarer Folgen austauschbar sind\footnote{Man beachte, dass hier die Folge $U_i$ auch von $\Pi$ unabhgängig sein sollte.}. Nach De Finetti gibt es ein zufälliges Maß $\alpha$, sodass bedingt auf $\alpha = \mu$, die $Z_i$ unabhängig identisch wie $\mu$ verteilt sind. Dies entspricht aber genau dem vorher beschriebenen $L(\mu)$\textit{-Paintbox Prozess} und die zweite Behauptung ist gezeigt. Für die erste Behauptung nutzen wir das starke Gesetz großer Zahlen. Dafür sei $\phi$ ein beliebiges Maß mit $L(\phi) = (p^\downarrow_i)_{i \in \mathbb{N}}$ und $X_i$ i.i.d $\phi$ verteilt. Dann gilt nach dem Gesetz $\frac{1}{n}\sum_{i=1}^{n}\chi_{\{X_i = x\}} \rightarrow \mathbb{P}(X_i = x) = \phi(x)$ P-f.s. für $n \to \infty$, somit konvergieren die normierten absteigenden Blockgrößen gegeben der Verteilung $\phi$ gegen $L(\phi) = (p_1,p_2,...)$ und die Behauptung ist gezeigt.
 \end{proof}
 
 \end{section}
