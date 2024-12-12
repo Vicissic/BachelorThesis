@@ -1,4 +1,4 @@
-\chapter{Linear preferential trees} 
+\chapter{Linear preferential trees}\label{chapter linear preferential trees}
 % LTeX: language=de-DE
 %Das Kapitel beschreibt den Aufbau von \text{linear preferential trees} und wie diese zu Split Bäume 
 In diesem Kapitel werden \textit{general preferential trees} eingeführt und die Einbettung von diesen in Devroyes \textit{Split} Bäume besprochen. Wir beginnen mit der Konstruktion von den jeweiligen Bäumen.
@@ -6,7 +6,7 @@ In diesem Kapitel werden \textit{general preferential trees} eingeführt und die
 %\\
 %\textbf{\fontsize{14}{18}\selectfont Konstruktion von general preferential trees}\\
 \begin{section}{Konstruktion von general preferential trees}
-Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{Random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_{d(v)}$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
+Der Aufbau von \textit{general preferential attachment trees} folgt im Wesentlichen dem Aufbau von \textit{random recursive Trees}. Wobei in \textit{random recursive Trees} Knoten aufeinanderfolgend, mit uniformer Wahrscheinlichkeit als Kind von bereits existierenden Knoten angefügt werden, ist das Anknüpfen von Knoten von \textit{general preferential attachment trees} noch abhängig vom Ausgangsgrad von den existierenden Knoten. Präziser formuliert, wird der Vaterknoten $v$ von einem neuen Knoten, proportional zu $w_{d(v)}$ ausgesucht, wobei $d(v)$ der Ausgangsgrad vom Knoten $v$ ist, und $w_1, w_2...$ eine Folge von Gewichten ist. Der Fall $w_i = 1, \forall i \in \mathbb{N}$, führt somit genau auf den Fall von \textit{random recursive trees} zurück. In dieser Ausarbeitung werden die Gewichte von der Form 
 \[
 w_k = \chi k + \rho \hspace{5pt}, \chi \in \mathbb{R}\hspace{5pt} \rho > 0
 \]
@@ -22,7 +22,7 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
 \begin{theorem}
 \cite[Lemma 3.1]{janson2019random}
 \label{Gewichte Satz}
-   Mit den linearen Gewichten $w_k = \chi k + p $, hat ein Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$.
+   Mit den linearen Gewichten $w_k = \chi k + p $, hat ein preferential Baum $T$ mit $m$ Knoten ein Gesamtgewicht $w(T) = (m-1)\chi + m\rho = m(\chi + \rho) - \chi$.
 \end{theorem}
 \begin{proof}
     Seien $d_1...d_m$ die Ausgangsgrade der jeweiligen Knoten im Baum. Dann ist die Summe der Ausgangsgrade, $\sum_{i=1}^{m}d_i = m-1$ und somit:
@@ -35,7 +35,7 @@ betrachtet, woher der Name \textit{linear preferential attachment trees} auch st
 \end{Definition}
 \begin{theorem} \cite[Theorem 3.2]{janson2019random}
     \label{linpreft Grenzwert}
-    Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty = $ eine Folge von \linpreft, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet. Sei $N_j(n) := |T^j_n|$, die Größe des j-ten \PsubT von $T_n$. Dann gilt 
+    Sei $(T_n)_1^\infty =(T_n^{\chi,\rho})_1^\infty$ eine Folge von linear preferential attachment trees, mit den Kindern von der Wurzel in der Reihenfolge ihres Erscheinens beschriftet. Sei $N_j(n) := |T^j_n|$, die Größe des j-ten \PsubT von $T_n$. Dann gilt 
     \[ 
         \forall j \geq 1  \hspace{6pt} \frac{N_j(n)}{n}  \rightarrow P_j \hspace{6pt} \text{für} \hspace{6pt} n \rightarrow \infty \hspace{6pt} \text{P-f.s.}.
   \]

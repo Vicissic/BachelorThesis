@@ -31,13 +31,7 @@ Dieses Kapitel nutzt die Hauptresultate aus dem vorherigen Kapitel um Aussagen �
         \label{first equation of Q theorem}
     \mathbb{E}[Q]  = \frac{1}{1-\mathbb{E}[\sum_{i \geq 1}P_i ]}-1 < \infty. 
     \end{equation} 
-    Zusätzlich erfüllt $Q$ die Verteilungs-Fixpunktgleichung (Distributional Fixed point equation)
-    \begin{equation}
-        Q \stackrel{\mathcal{L}}{=} \sum_{i=1}^{\infty}P_i^2(1+Q^{(i)}),
-        \label{second equation of Q theorem}
-    \end{equation} 
-    wobei die $Q^{(i)}$ unabhängig voneinander und von $(P_i)_{i \in \mathbb{N}}$ sind, und $Q^{(i)} \stackrel{\mathcal{L}}{=}Q$. 
-    Weiter gilt, mit $W$ so definiert wie nach Bemerkung \ref{Bemerkung PD Verteilungen}, dass 
+    Zusätzlich gilt, mit $W$ so definiert wie nach Bemerkung \ref{Bemerkung PD Verteilungen}, dass 
 \begin{equation}
     \mathbb{E}[Q] = \frac{\mathbb{E}[W]}{1 - \mathbb{E}[W]}.
         \label{third equation of Q theorem}
@@ -66,7 +60,7 @@ Dieses Kapitel nutzt die Hauptresultate aus dem vorherigen Kapitel um Aussagen �
   \[
     \tilde{Y}_n = 2\sum_{l < k \leq n}f(\textbf{X}^k,\textbf{X}^l).
   \]
-Bedingt auf alle \textit{Split Vektoren} $\mathcal{P}^{v}$, bekommen wir mit $\chi$ definiert als Indikator Funktion. \textcolor{red}{Warum verschwindet die Bedingung?}
+Bedingt auf alle \textit{Split Vektoren} $\mathcal{P}^{v}$, bekommen wir mit $\chi$ definiert als Indikator Funktion. 
 \begin{align}
 \mathbb{E}[f(\textbf{X}^1,\textbf{X}^2)|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}] &=\sum_{m=1}^{\infty}\mathbb{P}({f(\textbf{X}^1,\textbf{X}^2) \geq m}|\{\mathcal{P}^{v}, v \textnormal{ Knoten}\}) \nonumber\\
 &=\sum_{m=1}^{\infty}\mathbb{P}(\bigcap_{j=1}^{m}\textbf{X}_{1,j}=\textbf{X}_{2,j})   \nonumber\\
